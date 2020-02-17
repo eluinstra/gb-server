@@ -34,7 +34,7 @@ import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 public class GBServiceImpl implements GBService
 {
 	@NonNull
-	FSFileDAO fsDAO;
+	FSFileDAO fsFileDAO;
 	ExternalDataReferenceBuilder externalDataReferenceBuilder;
 
 	@Override
@@ -43,7 +43,7 @@ public class GBServiceImpl implements GBService
 		val files = new ArrayList<FSFile>();
 		for (val path: paths)
 		{
-			Optional<FSFile> fsFile = fsDAO.findFileByVirtualPath(path);
+			Optional<FSFile> fsFile = fsFileDAO.findFileByVirtualPath(path);
 			files.add(fsFile.orElseThrow(() -> new GBServiceException(path + " not found!")));
 		}
 		return externalDataReferenceBuilder.build(files);
