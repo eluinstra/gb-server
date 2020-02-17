@@ -25,6 +25,6 @@ import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 @WebService(targetNamespace="http://bitbucket.org/eluinstra/digikoppeling/gb/1.0")
 public interface GBService
 {
-  @WebResult(name="externalDataReference")
-	ExternalDataReference getExternalDataReference(@WebParam(name="path") @XmlElement(required=true) String path) throws GBServiceException;
+  @WebResult(name="external-data-reference")
+	ExternalDataReference getExternalDataReference(@WebParam(name="virtualPath") @XmlElement(required=true) String...virtualPaths) throws GBServiceException;
 }
