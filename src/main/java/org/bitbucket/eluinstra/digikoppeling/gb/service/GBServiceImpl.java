@@ -35,6 +35,7 @@ public class GBServiceImpl implements GBService
 {
 	@NonNull
 	FSFileDAO fsFileDAO;
+	@NonNull
 	ExternalDataReferenceBuilder externalDataReferenceBuilder;
 
 	@Override
@@ -43,6 +44,7 @@ public class GBServiceImpl implements GBService
 		val files = new ArrayList<FSFile>();
 		for (val path: paths)
 		{
+			//FSFile file = fsService.getFile(path);
 			Optional<FSFile> fsFile = fsFileDAO.findFileByVirtualPath(path);
 			files.add(fsFile.orElseThrow(() -> new GBServiceException(path + " not found!")));
 		}
