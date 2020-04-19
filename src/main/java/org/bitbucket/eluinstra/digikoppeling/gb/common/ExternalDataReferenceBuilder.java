@@ -52,7 +52,7 @@ public class ExternalDataReferenceBuilder
 	public ExternalDataReferenceBuilder(String baseUrl) throws DatatypeConfigurationException
 	{
 		datatypeFactory = DatatypeFactory.newInstance();
-		this.baseUrl = baseUrl;
+		this.baseUrl = baseUrl.contains("://0.0.0.0:") ? baseUrl.replace("://0.0.0.0:","://localhost:") : baseUrl;
 	}
 
 	public ExternalDataReference build(List<FSFile> fsFiles)
