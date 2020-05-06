@@ -16,7 +16,7 @@
 package org.bitbucket.eluinstra.digikoppeling.gb.common;
 
 import java.math.BigInteger;
-import java.util.Date;
+import java.time.Instant;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -84,7 +84,7 @@ public class ExternalDataReferenceBuilder
 		return result;
 	}
 
-	private DatetimeType createTime(@NonNull Date date)
+	private DatetimeType createTime(@NonNull Instant date)
 	{
 		val result = new DatetimeType();
 		result.setType("xs:dateTime");
@@ -92,10 +92,10 @@ public class ExternalDataReferenceBuilder
 		return result;
 	}
 
-	private XMLGregorianCalendar toGregorianCalendar(@NonNull Date date)
+	private XMLGregorianCalendar toGregorianCalendar(@NonNull Instant date)
 	{
-		GregorianCalendar cal = new GregorianCalendar();
-		cal.setTime(date);
+		val cal = new GregorianCalendar();
+		cal.setTimeInMillis(date.toEpochMilli());
 		return datatypeFactory.newXMLGregorianCalendar(cal);
 	}
 
