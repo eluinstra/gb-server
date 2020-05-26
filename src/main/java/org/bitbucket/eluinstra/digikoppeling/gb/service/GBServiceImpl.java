@@ -15,10 +15,10 @@
  */
 package org.bitbucket.eluinstra.digikoppeling.gb.service;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import org.bitbucket.eluinstra.digikoppeling.gb.common.ExternalDataReferenceBuilder;
-import org.bitbucket.eluinstra.fs.core.file.FSFile;
 import org.bitbucket.eluinstra.fs.core.file.FSFileDAO;
 
 import lombok.AccessLevel;
@@ -40,13 +40,10 @@ public class GBServiceImpl implements GBService
 	@Override
 	public ExternalDataReference getExternalDataReference(String...paths) throws GBServiceException
 	{
-		val files = new ArrayList<FSFile>();
-		for (val path: paths)
-		{
-			//val file = fsService.getFile(path);
-			val fsFile = fsFileDAO.findFileByVirtualPath(path);
-			files.add(fsFile.orElseThrow(() -> new GBServiceException(path + " not found!")));
-		}
+		val files = Arrays.stream(paths)
+				//.map(p -> fsService.getFile(path).orElseThrow(() -> new GBServiceException(p + " not found!")))
+				.map(p -> fsFileDAO.findFileByVirtualPath(p).orElseThrow(() -> new GBServiceException(p + " not found!")))
+				.collect(Collectors.toList());
 		return externalDataReferenceBuilder.build(files);
 	}
 
