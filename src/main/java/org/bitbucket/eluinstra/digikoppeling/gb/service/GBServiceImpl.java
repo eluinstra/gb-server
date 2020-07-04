@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 import org.bitbucket.eluinstra.digikoppeling.gb.common.ExternalDataReferenceBuilder;
 import org.bitbucket.eluinstra.fs.core.file.FSFileDAO;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,7 @@ import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 
 @FieldDefaults(level=AccessLevel.PRIVATE, makeFinal=true)
 @AllArgsConstructor
+@Transactional(transactionManager = "dataSourceTransactionManager")
 public class GBServiceImpl implements GBService
 {
 	@NonNull
@@ -42,9 +44,8 @@ public class GBServiceImpl implements GBService
 	{
 		val files = Arrays.stream(paths)
 				//.map(p -> fsService.getFile(path).orElseThrow(() -> new GBServiceException(p + " not found!")))
-				.map(p -> fsFileDAO.findFileByVirtualPath(p).orElseThrow(() -> new GBServiceException(p + " not found!")))
+				.map(p -> fsFileDAO.findFileByVirtualPath(p).<GBServiceException>orElseThrow(() -> new GBServiceException(p + " not found!")))
 				.collect(Collectors.toList());
 		return externalDataReferenceBuilder.build(files);
 	}
-
 }

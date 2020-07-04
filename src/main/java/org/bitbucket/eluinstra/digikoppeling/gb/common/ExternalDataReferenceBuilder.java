@@ -46,12 +46,14 @@ import nl.logius.digikoppeling.gb._2010._10.UrlType;
 @FieldDefaults(level=AccessLevel.PRIVATE, makeFinal=true)
 public class ExternalDataReferenceBuilder
 {
+	@NonNull
 	DatatypeFactory datatypeFactory;
+	@NonNull
 	String baseUrl;
 
 	public ExternalDataReferenceBuilder(String baseUrl) throws DatatypeConfigurationException
 	{
-		datatypeFactory = DatatypeFactory.newInstance();
+		this.datatypeFactory = DatatypeFactory.newInstance();
 		this.baseUrl = baseUrl.contains("://0.0.0.0:") ? baseUrl.replace("://0.0.0.0:","://localhost:") : baseUrl;
 	}
 
