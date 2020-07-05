@@ -26,7 +26,6 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.bitbucket.eluinstra.fs.core.file.FSFile;
-import org.bitbucket.eluinstra.fs.core.file.Period;
 
 import lombok.AccessLevel;
 import lombok.NonNull;
@@ -72,26 +71,31 @@ public class ExternalDataReferenceBuilder
 	{
 		val result = new DataReference();
 		result.setContextId(fsFile.getMd5checksum());
-		result.setLifetime(createLifetime(fsFile.getPeriod()));
+		result.setLifetime(createLifetime(fsFile));
 		result.setContent(createContent(fsFile));
 		result.setTransport(createTransport(fsFile.getVirtualPath()));
 		return result;
 	}
 
-	private Lifetime createLifetime(@NonNull Period period)
+	private Lifetime createLifetime(@NonNull FSFile fsFile)
 	{
 		val result = new Lifetime();
-		result.setCreationTime(createTime(period.getStartDate()));
-		result.setExpirationTime(createTime(period.getEndDate()));
+		result.setCreationTime(createTime(fsFile.getStartDate()));
+		result.setExpirationTime(createTime(fsFile.getEndDate()));
 		return result;
 	}
 
-	private DatetimeType createTime(@NonNull Instant date)
+	private DatetimeType createTime(Instant date)
 	{
-		val result = new DatetimeType();
-		result.setType("xs:dateTime");
-		result.setValue(toGregorianCalendar(date));
-		return result;
+		if (date != null)
+		{
+			val result = new DatetimeType();
+			result.setType("xs:dateTime");
+			result.setValue(toGregorianCalendar(date));
+			return result;
+		}
+		else
+			return null;
 	}
 
 	private XMLGregorianCalendar toGregorianCalendar(@NonNull Instant date)
