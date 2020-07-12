@@ -18,7 +18,7 @@ package org.bitbucket.eluinstra.digikoppeling.gb.service;
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.bitbucket.eluinstra.digikoppeling.gb.common.ExternalDataReferenceBuilder;
-import org.bitbucket.eluinstra.fs.core.file.FSFileDAO;
+import org.bitbucket.eluinstra.fs.core.file.FileSystem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -32,13 +32,13 @@ import lombok.experimental.FieldDefaults;
 public class GBServiceConfig
 {
 	@Autowired
-	FSFileDAO fsFileDAO;
+	FileSystem fileSystem;
 	@Value("${fs.baseUrl}")
 	String baseUrl;
 
 	@Bean
 	public GBService gbService() throws DatatypeConfigurationException
 	{
-		return new GBServiceImpl(fsFileDAO,new ExternalDataReferenceBuilder(baseUrl));
+		return new GBServiceImpl(fileSystem,new ExternalDataReferenceBuilder(baseUrl));
 	}
 }

@@ -15,13 +15,11 @@
  */
 package org.bitbucket.eluinstra.digikoppeling.gb.service;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 import org.bitbucket.eluinstra.digikoppeling.gb.common.ExternalDataReferenceBuilder;
-import org.bitbucket.eluinstra.fs.core.file.FSFileDAO;
+import org.bitbucket.eluinstra.fs.core.file.FileSystem;
 import org.springframework.transaction.annotation.Transactional;
 
+import io.vavr.collection.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
@@ -35,17 +33,16 @@ import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 public class GBServiceImpl implements GBService
 {
 	@NonNull
-	FSFileDAO fsFileDAO;
+	FileSystem fileSystem;
 	@NonNull
 	ExternalDataReferenceBuilder externalDataReferenceBuilder;
 
 	@Override
 	public ExternalDataReference getExternalDataReference(String...paths) throws GBServiceException
 	{
-		val files = Arrays.stream(paths)
-				//.map(p -> fsService.getFile(path).orElseThrow(() -> new GBServiceException(p + " not found!")))
-				.map(p -> fsFileDAO.findFileByVirtualPath(p).<GBServiceException>orElseThrow(() -> new GBServiceException(p + " not found!")))
-				.collect(Collectors.toList());
+		val files = List.of(paths)
+				//.map(p -> fileService.getFile(path).orElseThrow(() -> new GBServiceException(p + " not found!")))
+				.map(p -> fileSystem.findFile(p).getOrElseThrow(() -> new GBServiceException(p + " not found!")));
 		return externalDataReferenceBuilder.build(files);
 	}
 }

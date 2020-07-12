@@ -18,8 +18,6 @@ package org.bitbucket.eluinstra.digikoppeling.gb.common;
 import java.math.BigInteger;
 import java.time.Instant;
 import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
@@ -27,6 +25,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.bitbucket.eluinstra.fs.core.file.FSFile;
 
+import io.vavr.collection.Seq;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.val;
@@ -56,21 +55,18 @@ public class ExternalDataReferenceBuilder
 		this.baseUrl = baseUrl.contains("://0.0.0.0:") ? baseUrl.replace("://0.0.0.0:","://localhost:") : baseUrl;
 	}
 
-	public ExternalDataReference build(List<FSFile> fsFiles)
+	public ExternalDataReference build(Seq<FSFile> fsFiles)
 	{
 		val result = new ExternalDataReference();
 		result.setProfile(GbProfile.DIGIKOPPELING_GB_1_0);
-		result.getDataReference().addAll(
-				fsFiles.stream()
-					.map(f -> createDataReference(f))
-					.collect(Collectors.toList()));
+		result.getDataReference().addAll(fsFiles.map(f -> createDataReference(f)).asJava());
 		return result;
 	}
 
 	private DataReference createDataReference(FSFile fsFile)
 	{
 		val result = new DataReference();
-		result.setContextId(fsFile.getMd5checksum());
+		result.setContextId(fsFile.getMd5Checksum());
 		result.setLifetime(createLifetime(fsFile));
 		result.setContent(createContent(fsFile));
 		result.setTransport(createTransport(fsFile.getVirtualPath()));
@@ -108,10 +104,10 @@ public class ExternalDataReferenceBuilder
 	private Content createContent(FSFile fsFile)
 	{
 		val result = new Content();
-		result.setFilename(fsFile.getFilename());
+		result.setFilename(fsFile.getName());
 		result.setContentType(fsFile.getContentType());
-		result.setSize(BigInteger.valueOf(fsFile.getFileLength()));
-		result.setChecksum(createMD5Checksum(fsFile.getMd5checksum()));
+		result.setSize(BigInteger.valueOf(fsFile.getLength()));
+		result.setChecksum(createMD5Checksum(fsFile.getMd5Checksum()));
 		return result;
 	}
 
