@@ -18,7 +18,7 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.bitbucket.eluinstra.digikoppeling.gb</groupId>
+	<groupId>dev.luin.digikoppeling.gb</groupId>
 	<artifactId>gbfs-core</artifactId>
 	<packaging>jar</packaging>
 	<name>Grote Berichten Server Core</name>
@@ -97,7 +97,7 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.bitbucket.eluinstra.fs</groupId>
+			<groupId>dev.luin.fs</groupId>
 			<artifactId>fs-core</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
@@ -157,7 +157,7 @@
 							<goal>xjc</goal>
 						</goals>
 						<configuration>
-							<schemaDirectory>${project.basedir}/src/main/resources/org/bitbucket/eluinstra/digikoppeling/gb/xsd/</schemaDirectory>
+							<schemaDirectory>${project.basedir}/src/main/resources/dev/luin/digikoppeling/gb/xsd/</schemaDirectory>
 							<schemaFiles>gb-201010.xsd</schemaFiles>
 							<extension>true</extension>
 							<clearOutputDir>false</clearOutputDir>
@@ -190,7 +190,7 @@
 					<archive>
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							<packageName>org.bitbucket.eluinstra</packageName>
+							<packageName>dev.luin</packageName>
 							<addClasspath>true</addClasspath>
 							<addExtensions />
 							<classpathPrefix />
@@ -282,7 +282,7 @@
 				<configuration>
 					<instrumentation>
 						<ignores>
-							<ignore>org.bitbucket.eluinstra.digikoppeling.gb.dao.*</ignore>
+							<ignore>dev.luin.digikoppeling.gb.dao.*</ignore>
 						</ignores>
 					</instrumentation>
 					<systemProperties>

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.bitbucket.eluinstra.digikoppeling.gb.common;
+package dev.luin.digikoppeling.gb.common;
 
 import java.math.BigInteger;
 import java.time.Instant;
@@ -23,8 +23,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.bitbucket.eluinstra.fs.core.file.FSFile;
-
+import dev.luin.fs.core.file.FSFile;
 import io.vavr.collection.Seq;
 import lombok.AccessLevel;
 import lombok.NonNull;

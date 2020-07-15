@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.bitbucket.eluinstra.digikoppeling.gb.service;
+package dev.luin.digikoppeling.gb.service;
 
-import org.bitbucket.eluinstra.digikoppeling.gb.common.ExternalDataReferenceBuilder;
-import org.bitbucket.eluinstra.fs.core.file.FileSystem;
 import org.springframework.transaction.annotation.Transactional;
 
+import dev.luin.digikoppeling.gb.common.ExternalDataReferenceBuilder;
+import dev.luin.fs.core.file.FileSystem;
 import io.vavr.collection.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -42,7 +42,7 @@ public class GBServiceImpl implements GBService
 	{
 		val files = List.of(paths)
 				//.map(p -> fileService.getFile(path).orElseThrow(() -> new GBServiceException(p + " not found!")))
-				.map(p -> fileSystem.findFile(p).getOrElseThrow(() -> new GBServiceException(p + " not found!")));
+				.map(p -> fileSystem.findFile(p).<GBServiceException>getOrElseThrow(() -> new GBServiceException(p + " not found!")));
 		return externalDataReferenceBuilder.build(files);
 	}
 }

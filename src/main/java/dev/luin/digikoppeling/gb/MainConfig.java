@@ -13,19 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.bitbucket.eluinstra.digikoppeling.gb;
+package dev.luin.digikoppeling.gb;
 
-import org.bitbucket.eluinstra.digikoppeling.gb.service.GBServiceConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 
+import dev.luin.digikoppeling.gb.service.GBServiceConfig;
+
 @Configuration
 @Import({
 	GBServiceConfig.class
 })
-@PropertySource(value = {"classpath:org/bitbucket/eluinstra/digikoppeling/gb/default.properties"}, ignoreResourceNotFound = true)
+@PropertySource(value = {"classpath:dev/luin/digikoppeling/gb/default.properties"}, ignoreResourceNotFound = true)
 public class MainConfig
 {
 	public static void main(String[] args)

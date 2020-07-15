@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.bitbucket.eluinstra.digikoppeling.gb.service;
+package dev.luin.digikoppeling.gb.service;
 
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 
-@WebService(targetNamespace="http://bitbucket.org/eluinstra/digikoppeling/gb/1.0")
+@WebService(targetNamespace="http://luin.dev/digikoppeling/gb/1.0")
 public interface GBService
 {
   @WebResult(name="external-data-reference", targetNamespace="http://www.logius.nl/digikoppeling/gb/2010/10")
