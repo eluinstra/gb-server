@@ -39,6 +39,6 @@ public class GBServiceConfig
 	@Bean
 	public GBService gbService() throws DatatypeConfigurationException
 	{
-		return new GBServiceImpl(fileSystem,new ExternalDataReferenceBuilder(baseUrl));
+		return new GBServiceImpl(fileSystem,new ExternalDataReferenceBuilder(baseUrl + "/download"));
 	}
 }
