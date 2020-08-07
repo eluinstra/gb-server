@@ -105,7 +105,7 @@ public class ExternalDataReferenceBuilder
 		val result = new Content();
 		result.setFilename(fsFile.getName());
 		result.setContentType(fsFile.getContentType());
-		result.setSize(BigInteger.valueOf(fsFile.getLength()));
+		result.setSize(BigInteger.valueOf(fsFile.getFileLength()));
 		result.setChecksum(createMD5Checksum(fsFile.getMd5Checksum()));
 		return result;
 	}
