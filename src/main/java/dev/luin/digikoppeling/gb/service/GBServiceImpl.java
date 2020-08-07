@@ -15,8 +15,6 @@
  */
 package dev.luin.digikoppeling.gb.service;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import dev.luin.digikoppeling.gb.common.ExternalDataReferenceBuilder;
 import dev.luin.fs.core.file.FileSystem;
 import io.vavr.collection.List;
@@ -29,7 +27,6 @@ import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 
 @FieldDefaults(level=AccessLevel.PRIVATE, makeFinal=true)
 @AllArgsConstructor
-@Transactional(transactionManager = "dataSourceTransactionManager")
 public class GBServiceImpl implements GBService
 {
 	@NonNull
