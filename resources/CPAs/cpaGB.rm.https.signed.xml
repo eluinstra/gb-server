@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:CollaborationProtocolAgreement xmlns:axsl="http://www.w3.org/1999/XSL/TransformAlias" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:functx="http://www.functx.com" xmlns:tns="http://www.oasis-open.org/committees/ebxml-cppa/schema/cpp-cpa-2_0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.oasis-open.org/committees/ebxml-cppa/schema/cpp-cpa-2_0.xsd http://www.oasis-open.org/committees/ebxml-cppa/schema/cpp-cpa-2_0.xsd" tns:cpaid="cpaStubEBF.rm.https.signed" tns:version="1.0">
+	<tns:Status tns:value="agreed" />
+	<tns:Start>2011-01-01T00:00:00Z</tns:Start>
+	<tns:End>2021-01-01T00:00:00Z</tns:End>
+	<tns:PartyInfo tns:partyName="Server" tns:defaultMshChannelId="SERVER_defaultDeliveryChannel_ProfileBestEffortSigned" tns:defaultMshPackageId="MshSignalPackage">
+		<tns:PartyId tns:type="urn:osb:oin">00000000000000000000</tns:PartyId>
+		<tns:PartyRef xlink:href="" />
+		<tns:CollaborationRole>
+			<tns:ProcessSpecification tns:name="downloaden" tns:version="1.0" xlink:href="http://luin.dev/gb/download" tns:uuid="urn:luin.dev:gb:download:1.0" />
+			<tns:Role tns:name="SERVER" xlink:href="http://luin.dev/gb/" />
+			<tns:ServiceBinding>
+				<tns:Service tns:type="urn:osb:services">osb:download:1.1$1.0</tns:Service>
+				<tns:CanSend>
+					<tns:ThisPartyActionBinding tns:id="SERVER_S_Download" tns:action="downloaden" tns:packageId="XMLMessagePackage">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="transient-and-persistent" tns:timeToPerform="P2D" tns:isAuthorizationRequired="true" tns:isConfidential="transient" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="transient-and-persistent" />
+						<tns:ChannelId>SERVER_defaultDeliveryChannel_ProfileReliableMessagingSigned</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+					<tns:OtherPartyActionBinding>CLIENT_R_Download</tns:OtherPartyActionBinding>
+				</tns:CanSend>
+				<tns:CanReceive>
+					<tns:ThisPartyActionBinding tns:id="SERVER_R_BevestigDownload" tns:action="bevestigDownloaden" tns:packageId="XMLMessagePackage">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="transient-and-persistent" tns:timeToPerform="P2D" tns:isAuthorizationRequired="true" tns:isConfidential="transient" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="transient-and-persistent" />
+						<tns:ChannelId>SERVER_defaultDeliveryChannel_ProfileReliableMessagingSigned</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+					<tns:OtherPartyActionBinding>CLIENT_S_BevestigDownload</tns:OtherPartyActionBinding>
+				</tns:CanReceive>
+			</tns:ServiceBinding>
+		</tns:CollaborationRole>
+		<tns:CollaborationRole>
+			<tns:ProcessSpecification tns:name="uploaden" tns:version="1.0" xlink:href="http://luin.dev/gb/upload" tns:uuid="urn:luin.dev:gb:upload:1.0" />
+			<tns:Role tns:name="SERVER" xlink:href="http://luin.dev/gb/" />
+			<tns:ServiceBinding>
+				<tns:Service tns:type="urn:osb:services">osb:upload:1.1$1.0</tns:Service>
+				<tns:CanSend>
+					<tns:ThisPartyActionBinding tns:id="SERVER_S_BevestigUpload" tns:action="bevestigUploaden" tns:packageId="XMLMessagePackage">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="transient-and-persistent" tns:timeToPerform="P2D" tns:isAuthorizationRequired="true" tns:isConfidential="transient" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="transient-and-persistent" />
+						<tns:ChannelId>SERVER_defaultDeliveryChannel_ProfileReliableMessagingSigned</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+					<tns:OtherPartyActionBinding>CLIENT_R_BevestigUpload</tns:OtherPartyActionBinding>
+				</tns:CanSend>
+				<tns:CanReceive>
+					<tns:ThisPartyActionBinding tns:id="SERVER_R_Upload" tns:action="uploaden" tns:packageId="XMLMessagePackage">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="transient-and-persistent" tns:timeToPerform="P2D" tns:isAuthorizationRequired="true" tns:isConfidential="transient" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="transient-and-persistent" />
+						<tns:ChannelId>SERVER_defaultDeliveryChannel_ProfileReliableMessagingSigned</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+					<tns:OtherPartyActionBinding>CLIENT_S_Upload</tns:OtherPartyActionBinding>
+				</tns:CanReceive>
+			</tns:ServiceBinding>
+		</tns:CollaborationRole>
+		<tns:Certificate tns:certId="SERVER_SigningCert">
+			<KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<KeyValue>
+					<RSAKeyValue>
+						<Modulus>nld006yum90EYt6PncBDRC/CtpCDIFBNx9uZlQnYE/frw6jky5UY4QVoE8fyxEEUfsGBu9kKLvie9kDYzJOpebvmwJPiOdGG9MvdoBwv0kOsUC4F/Q6PN/W0V+nlPFdpju5TG+c96JtWyOZUjVzvu6J7wkCtug6QKUaQipEC/TT5fuHZ2RBsu3httbkD1crLiPDyTb3ORw+9ynHw6z0H1KSwkgXzeGcjrAVJ0s81OzWqhJtPr34BtnYiCJhLG7m//xTxTDCa5gN3l0gWtCO5zvy8dpHapiWuD0fS3OtzKPYfbImRFiPr4vAFYe3fIKk04l5IExawvhhVeNpWOF688Q==</Modulus>
+						<Exponent>AQAB</Exponent>
+					</RSAKeyValue>
+				</KeyValue>
+				<X509Data>
+					<X509SubjectName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509SubjectName>
+					<X509IssuerSerial>
+						<X509IssuerName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509IssuerName>
+						<X509SerialNumber>38743023</X509SerialNumber>
+					</X509IssuerSerial>
+					<X509Certificate>MIIDkTCCAnmgAwIBAgIEAk8r7zANBgkqhkiG9w0BAQsFADBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwHhcNMjAwMjE2MTkzMzEyWhcNMzAwMjEzMTkzMzEyWjBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCeV3TTrK6b3QRi3o+dwENEL8K2kIMgUE3H25mVCdgT9+vDqOTLlRjhBWgTx/LEQRR+wYG72Qou+J72QNjMk6l5u+bAk+I50Yb0y92gHC/SQ6xQLgX9Do839bRX6eU8V2mO7lMb5z3om1bI5lSNXO+7onvCQK26DpApRpCKkQL9NPl+4dnZEGy7eG21uQPVysuI8PJNvc5HD73KcfDrPQfUpLCSBfN4ZyOsBUnSzzU7NaqEm0+vfgG2diIImEsbub//FPFMMJrmA3eXSBa0I7nO/Lx2kdqmJa4PR9Lc63Mo9h9siZEWI+vi8AVh7d8gqTTiXkgTFrC+GFV42lY4XrzxAgMBAAGjNzA1MBQGA1UdEQQNMAuCCWxvY2FsaG9zdDAdBgNVHQ4EFgQU/UYjAsSd5ZpoGdeFEE3HvZaJ07wwDQYJKoZIhvcNAQELBQADggEBAEJOfXifv2H6HzHHX4erDmSFC4mvDbgw9FY0GeKU5R6MQKNSc7lpCCXf6/RJ5KipraAbs+e1Y9CTvhvS4K2cvEDxi+wn5yFkPH72RnRvDsACHKvYPIbV1q3S9SG91QMaCFPcHb1TpEldHRD8AX/C9ERr5dlZactEyBQVmS8WN8rTXU6hlDqAMkVEGRXUHCeVKAKlgNqgKMOPGLZ6HR9EW7W/98jI6qObZk5ATNlbXdi8KtB4542Igdb8XKp/pRCR5mt+oq77ogbS+SN5p8e31Tu4FoD4N+kUW/WCmYXHEuE3bOs2Pq8oK2t5GLNVQRfdumucbk7AhrJx0bcWu63jr0I=</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</tns:Certificate>
+		<tns:Certificate tns:certId="SERVER_EncryptionCert">
+			<KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<KeyValue>
+					<RSAKeyValue>
+						<Modulus>nld006yum90EYt6PncBDRC/CtpCDIFBNx9uZlQnYE/frw6jky5UY4QVoE8fyxEEUfsGBu9kKLvie9kDYzJOpebvmwJPiOdGG9MvdoBwv0kOsUC4F/Q6PN/W0V+nlPFdpju5TG+c96JtWyOZUjVzvu6J7wkCtug6QKUaQipEC/TT5fuHZ2RBsu3httbkD1crLiPDyTb3ORw+9ynHw6z0H1KSwkgXzeGcjrAVJ0s81OzWqhJtPr34BtnYiCJhLG7m//xTxTDCa5gN3l0gWtCO5zvy8dpHapiWuD0fS3OtzKPYfbImRFiPr4vAFYe3fIKk04l5IExawvhhVeNpWOF688Q==</Modulus>
+						<Exponent>AQAB</Exponent>
+					</RSAKeyValue>
+				</KeyValue>
+				<X509Data>
+					<X509SubjectName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509SubjectName>
+					<X509IssuerSerial>
+						<X509IssuerName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509IssuerName>
+						<X509SerialNumber>38743023</X509SerialNumber>
+					</X509IssuerSerial>
+					<X509Certificate>MIIDkTCCAnmgAwIBAgIEAk8r7zANBgkqhkiG9w0BAQsFADBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwHhcNMjAwMjE2MTkzMzEyWhcNMzAwMjEzMTkzMzEyWjBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCeV3TTrK6b3QRi3o+dwENEL8K2kIMgUE3H25mVCdgT9+vDqOTLlRjhBWgTx/LEQRR+wYG72Qou+J72QNjMk6l5u+bAk+I50Yb0y92gHC/SQ6xQLgX9Do839bRX6eU8V2mO7lMb5z3om1bI5lSNXO+7onvCQK26DpApRpCKkQL9NPl+4dnZEGy7eG21uQPVysuI8PJNvc5HD73KcfDrPQfUpLCSBfN4ZyOsBUnSzzU7NaqEm0+vfgG2diIImEsbub//FPFMMJrmA3eXSBa0I7nO/Lx2kdqmJa4PR9Lc63Mo9h9siZEWI+vi8AVh7d8gqTTiXkgTFrC+GFV42lY4XrzxAgMBAAGjNzA1MBQGA1UdEQQNMAuCCWxvY2FsaG9zdDAdBgNVHQ4EFgQU/UYjAsSd5ZpoGdeFEE3HvZaJ07wwDQYJKoZIhvcNAQELBQADggEBAEJOfXifv2H6HzHHX4erDmSFC4mvDbgw9FY0GeKU5R6MQKNSc7lpCCXf6/RJ5KipraAbs+e1Y9CTvhvS4K2cvEDxi+wn5yFkPH72RnRvDsACHKvYPIbV1q3S9SG91QMaCFPcHb1TpEldHRD8AX/C9ERr5dlZactEyBQVmS8WN8rTXU6hlDqAMkVEGRXUHCeVKAKlgNqgKMOPGLZ6HR9EW7W/98jI6qObZk5ATNlbXdi8KtB4542Igdb8XKp/pRCR5mt+oq77ogbS+SN5p8e31Tu4FoD4N+kUW/WCmYXHEuE3bOs2Pq8oK2t5GLNVQRfdumucbk7AhrJx0bcWu63jr0I=</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</tns:Certificate>
+		<tns:Certificate tns:certId="SERVER_ServerCert">
+			<KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<KeyValue>
+					<RSAKeyValue>
+						<Modulus>nld006yum90EYt6PncBDRC/CtpCDIFBNx9uZlQnYE/frw6jky5UY4QVoE8fyxEEUfsGBu9kKLvie9kDYzJOpebvmwJPiOdGG9MvdoBwv0kOsUC4F/Q6PN/W0V+nlPFdpju5TG+c96JtWyOZUjVzvu6J7wkCtug6QKUaQipEC/TT5fuHZ2RBsu3httbkD1crLiPDyTb3ORw+9ynHw6z0H1KSwkgXzeGcjrAVJ0s81OzWqhJtPr34BtnYiCJhLG7m//xTxTDCa5gN3l0gWtCO5zvy8dpHapiWuD0fS3OtzKPYfbImRFiPr4vAFYe3fIKk04l5IExawvhhVeNpWOF688Q==</Modulus>
+						<Exponent>AQAB</Exponent>
+					</RSAKeyValue>
+				</KeyValue>
+				<X509Data>
+					<X509SubjectName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509SubjectName>
+					<X509IssuerSerial>
+						<X509IssuerName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509IssuerName>
+						<X509SerialNumber>38743023</X509SerialNumber>
+					</X509IssuerSerial>
+					<X509Certificate>MIIDkTCCAnmgAwIBAgIEAk8r7zANBgkqhkiG9w0BAQsFADBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwHhcNMjAwMjE2MTkzMzEyWhcNMzAwMjEzMTkzMzEyWjBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCeV3TTrK6b3QRi3o+dwENEL8K2kIMgUE3H25mVCdgT9+vDqOTLlRjhBWgTx/LEQRR+wYG72Qou+J72QNjMk6l5u+bAk+I50Yb0y92gHC/SQ6xQLgX9Do839bRX6eU8V2mO7lMb5z3om1bI5lSNXO+7onvCQK26DpApRpCKkQL9NPl+4dnZEGy7eG21uQPVysuI8PJNvc5HD73KcfDrPQfUpLCSBfN4ZyOsBUnSzzU7NaqEm0+vfgG2diIImEsbub//FPFMMJrmA3eXSBa0I7nO/Lx2kdqmJa4PR9Lc63Mo9h9siZEWI+vi8AVh7d8gqTTiXkgTFrC+GFV42lY4XrzxAgMBAAGjNzA1MBQGA1UdEQQNMAuCCWxvY2FsaG9zdDAdBgNVHQ4EFgQU/UYjAsSd5ZpoGdeFEE3HvZaJ07wwDQYJKoZIhvcNAQELBQADggEBAEJOfXifv2H6HzHHX4erDmSFC4mvDbgw9FY0GeKU5R6MQKNSc7lpCCXf6/RJ5KipraAbs+e1Y9CTvhvS4K2cvEDxi+wn5yFkPH72RnRvDsACHKvYPIbV1q3S9SG91QMaCFPcHb1TpEldHRD8AX/C9ERr5dlZactEyBQVmS8WN8rTXU6hlDqAMkVEGRXUHCeVKAKlgNqgKMOPGLZ6HR9EW7W/98jI6qObZk5ATNlbXdi8KtB4542Igdb8XKp/pRCR5mt+oq77ogbS+SN5p8e31Tu4FoD4N+kUW/WCmYXHEuE3bOs2Pq8oK2t5GLNVQRfdumucbk7AhrJx0bcWu63jr0I=</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</tns:Certificate>
+		<tns:Certificate tns:certId="SERVER_ClientCert">
+			<KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<KeyValue>
+					<RSAKeyValue>
+						<Modulus>nld006yum90EYt6PncBDRC/CtpCDIFBNx9uZlQnYE/frw6jky5UY4QVoE8fyxEEUfsGBu9kKLvie9kDYzJOpebvmwJPiOdGG9MvdoBwv0kOsUC4F/Q6PN/W0V+nlPFdpju5TG+c96JtWyOZUjVzvu6J7wkCtug6QKUaQipEC/TT5fuHZ2RBsu3httbkD1crLiPDyTb3ORw+9ynHw6z0H1KSwkgXzeGcjrAVJ0s81OzWqhJtPr34BtnYiCJhLG7m//xTxTDCa5gN3l0gWtCO5zvy8dpHapiWuD0fS3OtzKPYfbImRFiPr4vAFYe3fIKk04l5IExawvhhVeNpWOF688Q==</Modulus>
+						<Exponent>AQAB</Exponent>
+					</RSAKeyValue>
+				</KeyValue>
+				<X509Data>
+					<X509SubjectName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509SubjectName>
+					<X509IssuerSerial>
+						<X509IssuerName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509IssuerName>
+						<X509SerialNumber>38743023</X509SerialNumber>
+					</X509IssuerSerial>
+					<X509Certificate>MIIDkTCCAnmgAwIBAgIEAk8r7zANBgkqhkiG9w0BAQsFADBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwHhcNMjAwMjE2MTkzMzEyWhcNMzAwMjEzMTkzMzEyWjBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCeV3TTrK6b3QRi3o+dwENEL8K2kIMgUE3H25mVCdgT9+vDqOTLlRjhBWgTx/LEQRR+wYG72Qou+J72QNjMk6l5u+bAk+I50Yb0y92gHC/SQ6xQLgX9Do839bRX6eU8V2mO7lMb5z3om1bI5lSNXO+7onvCQK26DpApRpCKkQL9NPl+4dnZEGy7eG21uQPVysuI8PJNvc5HD73KcfDrPQfUpLCSBfN4ZyOsBUnSzzU7NaqEm0+vfgG2diIImEsbub//FPFMMJrmA3eXSBa0I7nO/Lx2kdqmJa4PR9Lc63Mo9h9siZEWI+vi8AVh7d8gqTTiXkgTFrC+GFV42lY4XrzxAgMBAAGjNzA1MBQGA1UdEQQNMAuCCWxvY2FsaG9zdDAdBgNVHQ4EFgQU/UYjAsSd5ZpoGdeFEE3HvZaJ07wwDQYJKoZIhvcNAQELBQADggEBAEJOfXifv2H6HzHHX4erDmSFC4mvDbgw9FY0GeKU5R6MQKNSc7lpCCXf6/RJ5KipraAbs+e1Y9CTvhvS4K2cvEDxi+wn5yFkPH72RnRvDsACHKvYPIbV1q3S9SG91QMaCFPcHb1TpEldHRD8AX/C9ERr5dlZactEyBQVmS8WN8rTXU6hlDqAMkVEGRXUHCeVKAKlgNqgKMOPGLZ6HR9EW7W/98jI6qObZk5ATNlbXdi8KtB4542Igdb8XKp/pRCR5mt+oq77ogbS+SN5p8e31Tu4FoD4N+kUW/WCmYXHEuE3bOs2Pq8oK2t5GLNVQRfdumucbk7AhrJx0bcWu63jr0I=</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</tns:Certificate>
+		<tns:SecurityDetails tns:securityId="SERVER_Security">
+			<tns:TrustAnchors>
+				<tns:AnchorCertificateRef tns:certId="SERVER_SigningCert" />
+				<tns:AnchorCertificateRef tns:certId="SERVER_EncryptionCert" />
+			</tns:TrustAnchors>
+		</tns:SecurityDetails>
+		<tns:SecurityDetails tns:securityId="SERVER_TransportSecurity">
+			<tns:TrustAnchors>
+				<tns:AnchorCertificateRef tns:certId="SERVER_ServerCert" />
+				<tns:AnchorCertificateRef tns:certId="SERVER_ClientCert" />
+			</tns:TrustAnchors>
+		</tns:SecurityDetails>
+		<tns:DeliveryChannel tns:channelId="SERVER_defaultDeliveryChannel_ProfileBestEffortSigned" tns:docExchangeId="SERVER_SIGNED_BestEffort" tns:transportId="SERVER_transport_HTTPS">
+			<tns:MessagingCharacteristics tns:syncReplyMode="none" tns:ackRequested="never" tns:actor="urn:oasis:names:tc:ebxml-msg:actor:toPartyMSH" tns:ackSignatureRequested="never" tns:duplicateElimination="never" />
+		</tns:DeliveryChannel>
+		<tns:DeliveryChannel tns:channelId="SERVER_defaultDeliveryChannel_ProfileReliableMessagingSigned" tns:docExchangeId="SERVER_SIGNED_ReliableMessaging" tns:transportId="SERVER_transport_HTTPS">
+			<tns:MessagingCharacteristics tns:syncReplyMode="none" tns:ackRequested="always" tns:actor="urn:oasis:names:tc:ebxml-msg:actor:toPartyMSH" tns:ackSignatureRequested="never" tns:duplicateElimination="always" />
+		</tns:DeliveryChannel>
+		<tns:Transport tns:transportId="SERVER_transport_HTTPS">
+			<tns:TransportSender>
+				<tns:TransportProtocol tns:version="1.1">HTTP</tns:TransportProtocol>
+				<tns:TransportClientSecurity>
+					<tns:TransportSecurityProtocol tns:version="3.0">SSL</tns:TransportSecurityProtocol>
+					<tns:ClientCertificateRef tns:certId="SERVER_ClientCert" />
+					<tns:ServerSecurityDetailsRef tns:securityId="SERVER_TransportSecurity" />
+				</tns:TransportClientSecurity>
+			</tns:TransportSender>
+			<tns:TransportReceiver>
+				<tns:TransportProtocol tns:version="1.1">HTTP</tns:TransportProtocol>
+				<tns:Endpoint tns:uri="https://localhost:8888/ebms" tns:type="allPurpose" />
+				<tns:TransportServerSecurity>
+					<tns:TransportSecurityProtocol tns:version="3.0">SSL</tns:TransportSecurityProtocol>
+					<tns:ServerCertificateRef tns:certId="SERVER_ServerCert" />
+					<tns:ClientSecurityDetailsRef tns:securityId="SERVER_TransportSecurity" />
+				</tns:TransportServerSecurity>
+			</tns:TransportReceiver>
+		</tns:Transport>
+		<tns:DocExchange tns:docExchangeId="SERVER_SIGNED_BestEffort">
+			<tns:ebXMLSenderBinding tns:version="2.0">
+				<tns:SenderNonRepudiation>
+					<tns:NonRepudiationProtocol>http://www.w3.org/2000/09/xmldsig#</tns:NonRepudiationProtocol>
+					<tns:HashFunction>http://www.w3.org/2000/09/xmldsig#sha1</tns:HashFunction>
+					<tns:SignatureAlgorithm>http://www.w3.org/2000/09/xmldsig#rsa-sha1</tns:SignatureAlgorithm>
+					<tns:SigningCertificateRef tns:certId="SERVER_SigningCert" />
+				</tns:SenderNonRepudiation>
+			</tns:ebXMLSenderBinding>
+			<tns:ebXMLReceiverBinding tns:version="2.0">
+				<tns:ReceiverNonRepudiation>
+					<tns:NonRepudiationProtocol>http://www.w3.org/2000/09/xmldsig#</tns:NonRepudiationProtocol>
+					<tns:HashFunction>http://www.w3.org/2000/09/xmldsig#sha1</tns:HashFunction>
+					<tns:SignatureAlgorithm>http://www.w3.org/2000/09/xmldsig#rsa-sha1</tns:SignatureAlgorithm>
+					<tns:SigningSecurityDetailsRef tns:securityId="SERVER_Security" />
+				</tns:ReceiverNonRepudiation>
+			</tns:ebXMLReceiverBinding>
+		</tns:DocExchange>
+		<tns:DocExchange tns:docExchangeId="SERVER_SIGNED_ReliableMessaging">
+			<tns:ebXMLSenderBinding tns:version="2.0">
+				<tns:ReliableMessaging>
+					<tns:Retries>5</tns:Retries>
+					<tns:RetryInterval>PT5M</tns:RetryInterval>
+					<tns:MessageOrderSemantics>NotGuaranteed</tns:MessageOrderSemantics>
+				</tns:ReliableMessaging>
+				<tns:PersistDuration>PT30M</tns:PersistDuration>
+				<tns:SenderNonRepudiation>
+					<tns:NonRepudiationProtocol>http://www.w3.org/2000/09/xmldsig#</tns:NonRepudiationProtocol>
+					<tns:HashFunction>http://www.w3.org/2000/09/xmldsig#sha1</tns:HashFunction>
+					<tns:SignatureAlgorithm>http://www.w3.org/2000/09/xmldsig#rsa-sha1</tns:SignatureAlgorithm>
+					<tns:SigningCertificateRef tns:certId="SERVER_SigningCert" />
+				</tns:SenderNonRepudiation>
+			</tns:ebXMLSenderBinding>
+			<tns:ebXMLReceiverBinding tns:version="2.0">
+				<tns:ReliableMessaging>
+					<tns:Retries>5</tns:Retries>
+					<tns:RetryInterval>PT5M</tns:RetryInterval>
+					<tns:MessageOrderSemantics>NotGuaranteed</tns:MessageOrderSemantics>
+				</tns:ReliableMessaging>
+				<tns:PersistDuration>PT30M</tns:PersistDuration>
+				<tns:ReceiverNonRepudiation>
+					<tns:NonRepudiationProtocol>http://www.w3.org/2000/09/xmldsig#</tns:NonRepudiationProtocol>
+					<tns:HashFunction>http://www.w3.org/2000/09/xmldsig#sha1</tns:HashFunction>
+					<tns:SignatureAlgorithm>http://www.w3.org/2000/09/xmldsig#rsa-sha1</tns:SignatureAlgorithm>
+					<tns:SigningSecurityDetailsRef tns:securityId="SERVER_Security" />
+				</tns:ReceiverNonRepudiation>
+			</tns:ebXMLReceiverBinding>
+		</tns:DocExchange>
+	</tns:PartyInfo>
+	<tns:PartyInfo tns:partyName="Client" tns:defaultMshChannelId="CLIENT_defaultDeliveryChannel_ProfileBestEffortSigned" tns:defaultMshPackageId="MshSignalPackage">
+		<tns:PartyId tns:type="urn:osb:oin">00000000000000000001</tns:PartyId>
+		<tns:PartyRef xlink:href="" />
+		<tns:CollaborationRole>
+			<tns:ProcessSpecification tns:name="downloaden" tns:version="1.0" xlink:href="http://luin.dev/gb/download" tns:uuid="urn:luin.dev:gb:download:1.0" />
+			<tns:Role tns:name="CLIENT" xlink:href="http://luin.dev/gb/" />
+			<tns:ServiceBinding>
+				<tns:Service tns:type="urn:osb:services">osb:download:1.1$1.0</tns:Service>
+				<tns:CanSend>
+					<tns:ThisPartyActionBinding tns:id="CLIENT_S_BevestigDownload" tns:action="bevestigDownloaden" tns:packageId="XMLMessagePackage">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="transient-and-persistent" tns:timeToPerform="P2D" tns:isAuthorizationRequired="true" tns:isConfidential="transient" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="transient-and-persistent" />
+						<tns:ChannelId>CLIENT_defaultDeliveryChannel_ProfileReliableMessagingSigned</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+					<tns:OtherPartyActionBinding>SERVER_R_BevestigDownload</tns:OtherPartyActionBinding>
+				</tns:CanSend>
+				<tns:CanReceive>
+					<tns:ThisPartyActionBinding tns:id="CLIENT_R_Download" tns:action="downloaden" tns:packageId="XMLMessagePackage">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="transient-and-persistent" tns:timeToPerform="P2D" tns:isAuthorizationRequired="true" tns:isConfidential="transient" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="transient-and-persistent" />
+						<tns:ChannelId>CLIENT_defaultDeliveryChannel_ProfileReliableMessagingSigned</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+					<tns:OtherPartyActionBinding>SERVER_S_Download</tns:OtherPartyActionBinding>
+				</tns:CanReceive>
+			</tns:ServiceBinding>
+		</tns:CollaborationRole>
+		<tns:CollaborationRole>
+			<tns:ProcessSpecification tns:name="uploaden" tns:version="1.0" xlink:href="http://luin.dev/gb/upload" tns:uuid="urn:luin.dev:gb:upload:1.0" />
+			<tns:Role tns:name="CLIENT" xlink:href="http://luin.dev/gb/" />
+			<tns:ServiceBinding>
+				<tns:Service tns:type="urn:osb:services">osb:upload:1.1$1.0</tns:Service>
+				<tns:CanSend>
+					<tns:ThisPartyActionBinding tns:id="CLIENT_S_Upload" tns:action="uploaden" tns:packageId="XMLMessagePackage">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="transient-and-persistent" tns:timeToPerform="P2D" tns:isAuthorizationRequired="true" tns:isConfidential="transient" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="transient-and-persistent" />
+						<tns:ChannelId>CLIENT_defaultDeliveryChannel_ProfileReliableMessagingSigned</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+					<tns:OtherPartyActionBinding>SERVER_R_Upload</tns:OtherPartyActionBinding>
+				</tns:CanSend>
+				<tns:CanReceive>
+					<tns:ThisPartyActionBinding tns:id="CLIENT_R_BevestigUpload" tns:action="bevestigUploaden" tns:packageId="XMLMessagePackage">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="transient-and-persistent" tns:timeToPerform="P2D" tns:isAuthorizationRequired="true" tns:isConfidential="transient" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="transient-and-persistent" />
+						<tns:ChannelId>CLIENT_defaultDeliveryChannel_ProfileReliableMessagingSigned</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+					<tns:OtherPartyActionBinding>SERVER_S_BevestigUpload</tns:OtherPartyActionBinding>
+				</tns:CanReceive>
+			</tns:ServiceBinding>
+		</tns:CollaborationRole>
+		<tns:Certificate tns:certId="CLIENT_SigningCert">
+			<KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<KeyValue>
+					<RSAKeyValue>
+						<Modulus>jOtmODIw7Qv3QOVMyIUbpgT0HDrHBynE2LfjAZk7bNfZrOtNdAq65mIDqUEn8SRsY2zBEmPHxgf38nmJcpcOIORApFDxZMZd44rbrghq+AutKr36krDvLl4kFiUFRefl7IjhyKFwZvH2bK3odwDNIExy285amVduCkG7bPkBcTwOVJbAYR9A2zXJHDZti2fvWMZpEm3B0M7LPJ6KfwCBmPDWXIiqqXIAeOWZjAC4UuqUm6jzkcs9tfO2Qm9bvJZdceeJcWMC90AouL5f8iR3aRt4rHQQZNknmNxTrpqE4G4eTBau9ix9F3iyV15QWgYQLZR7Q2kfZwCV7Zp4JgLYcQ==</Modulus>
+						<Exponent>AQAB</Exponent>
+					</RSAKeyValue>
+				</KeyValue>
+				<X509Data>
+					<X509SubjectName>CN=localhost, OU=Rules Matter, O=Ordina, L=Groningen, ST=Groningen, C=NL</X509SubjectName>
+					<X509IssuerSerial>
+						<X509IssuerName>CN=localhost, OU=Rules Matter, O=Ordina, L=Groningen, ST=Groningen, C=NL</X509IssuerName>
+						<X509SerialNumber>1336114976</X509SerialNumber>
+					</X509IssuerSerial>
+					<X509Certificate>MIIDlzCCAn+gAwIBAgIET6N/IDANBgkqhkiG9w0BAQsFADBxMQswCQYDVQQGEwJOTDESMBAGA1UECBMJR3JvbmluZ2VuMRIwEAYDVQQHEwlHcm9uaW5nZW4xDzANBgNVBAoTBk9yZGluYTEVMBMGA1UECxMMUnVsZXMgTWF0dGVyMRIwEAYDVQQDEwlsb2NhbGhvc3QwHhcNMjAwNjA3MTQyOTU5WhcNMzAwNjA1MTQyOTU5WjBxMQswCQYDVQQGEwJOTDESMBAGA1UECBMJR3JvbmluZ2VuMRIwEAYDVQQHEwlHcm9uaW5nZW4xDzANBgNVBAoTBk9yZGluYTEVMBMGA1UECxMMUnVsZXMgTWF0dGVyMRIwEAYDVQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCM62Y4MjDtC/dA5UzIhRumBPQcOscHKcTYt+MBmTts19ms6010CrrmYgOpQSfxJGxjbMESY8fGB/fyeYlylw4g5ECkUPFkxl3jituuCGr4C60qvfqSsO8uXiQWJQVF5+XsiOHIoXBm8fZsreh3AM0gTHLbzlqZV24KQbts+QFxPA5UlsBhH0DbNckcNm2LZ+9YxmkSbcHQzss8nop/AIGY8NZciKqpcgB45ZmMALhS6pSbqPORyz2187ZCb1u8ll1x54lxYwL3QCi4vl/yJHdpG3isdBBk2SeY3FOumoTgbh5MFq72LH0XeLJXXlBaBhAtlHtDaR9nAJXtmngmAthxAgMBAAGjNzA1MBQGA1UdEQQNMAuCCWxvY2FsaG9zdDAdBgNVHQ4EFgQUIGrhAcn6OsrmULDTpbcHhS31ezcwDQYJKoZIhvcNAQELBQADggEBABsqfBJfepASqhu7m7HU97k4aCYiElrJEcyhUluUmAfV/sKo2zD1EtziE4zdQMBHICOYkBLIIvNEpIrYXhsTWOymwjIp+niz8cDYw8Ya57RPNs4cQHZXEnOqwpqal2n9WGIq7Op4OkRT8thQisua/x2zI+N1WzM+MOu5Z/mKRRKQDdWTvNnWpHNp5JZ1TAGbZxHoUUQDQNwEXCMOuzXdE6x8rVLwfEMwpievFnIn9DwegzXM4GBBe+fHErox1WA+ijrcNjl4zhFQ1himdCuEY6AQeAEd5wAalQJ34FpZPfcWRHXRSkUszoiIGArhX0fmL3GeZq+a4tN7XCBNaTPqib4=
+					</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</tns:Certificate>
+		<tns:Certificate tns:certId="CLIENT_EncryptionCert">
+			<KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<KeyValue>
+					<RSAKeyValue>
+						<Modulus>nld006yum90EYt6PncBDRC/CtpCDIFBNx9uZlQnYE/frw6jky5UY4QVoE8fyxEEUfsGBu9kKLvie9kDYzJOpebvmwJPiOdGG9MvdoBwv0kOsUC4F/Q6PN/W0V+nlPFdpju5TG+c96JtWyOZUjVzvu6J7wkCtug6QKUaQipEC/TT5fuHZ2RBsu3httbkD1crLiPDyTb3ORw+9ynHw6z0H1KSwkgXzeGcjrAVJ0s81OzWqhJtPr34BtnYiCJhLG7m//xTxTDCa5gN3l0gWtCO5zvy8dpHapiWuD0fS3OtzKPYfbImRFiPr4vAFYe3fIKk04l5IExawvhhVeNpWOF688Q==</Modulus>
+						<Exponent>AQAB</Exponent>
+					</RSAKeyValue>
+				</KeyValue>
+				<X509Data>
+					<X509SubjectName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509SubjectName>
+					<X509IssuerSerial>
+						<X509IssuerName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509IssuerName>
+						<X509SerialNumber>38743023</X509SerialNumber>
+					</X509IssuerSerial>
+					<X509Certificate>MIIDkTCCAnmgAwIBAgIEAk8r7zANBgkqhkiG9w0BAQsFADBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwHhcNMjAwMjE2MTkzMzEyWhcNMzAwMjEzMTkzMzEyWjBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCeV3TTrK6b3QRi3o+dwENEL8K2kIMgUE3H25mVCdgT9+vDqOTLlRjhBWgTx/LEQRR+wYG72Qou+J72QNjMk6l5u+bAk+I50Yb0y92gHC/SQ6xQLgX9Do839bRX6eU8V2mO7lMb5z3om1bI5lSNXO+7onvCQK26DpApRpCKkQL9NPl+4dnZEGy7eG21uQPVysuI8PJNvc5HD73KcfDrPQfUpLCSBfN4ZyOsBUnSzzU7NaqEm0+vfgG2diIImEsbub//FPFMMJrmA3eXSBa0I7nO/Lx2kdqmJa4PR9Lc63Mo9h9siZEWI+vi8AVh7d8gqTTiXkgTFrC+GFV42lY4XrzxAgMBAAGjNzA1MBQGA1UdEQQNMAuCCWxvY2FsaG9zdDAdBgNVHQ4EFgQU/UYjAsSd5ZpoGdeFEE3HvZaJ07wwDQYJKoZIhvcNAQELBQADggEBAEJOfXifv2H6HzHHX4erDmSFC4mvDbgw9FY0GeKU5R6MQKNSc7lpCCXf6/RJ5KipraAbs+e1Y9CTvhvS4K2cvEDxi+wn5yFkPH72RnRvDsACHKvYPIbV1q3S9SG91QMaCFPcHb1TpEldHRD8AX/C9ERr5dlZactEyBQVmS8WN8rTXU6hlDqAMkVEGRXUHCeVKAKlgNqgKMOPGLZ6HR9EW7W/98jI6qObZk5ATNlbXdi8KtB4542Igdb8XKp/pRCR5mt+oq77ogbS+SN5p8e31Tu4FoD4N+kUW/WCmYXHEuE3bOs2Pq8oK2t5GLNVQRfdumucbk7AhrJx0bcWu63jr0I=</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</tns:Certificate>
+		<tns:Certificate tns:certId="CLIENT_ServerCert">
+			<KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<KeyValue>
+					<RSAKeyValue>
+						<Modulus>nld006yum90EYt6PncBDRC/CtpCDIFBNx9uZlQnYE/frw6jky5UY4QVoE8fyxEEUfsGBu9kKLvie9kDYzJOpebvmwJPiOdGG9MvdoBwv0kOsUC4F/Q6PN/W0V+nlPFdpju5TG+c96JtWyOZUjVzvu6J7wkCtug6QKUaQipEC/TT5fuHZ2RBsu3httbkD1crLiPDyTb3ORw+9ynHw6z0H1KSwkgXzeGcjrAVJ0s81OzWqhJtPr34BtnYiCJhLG7m//xTxTDCa5gN3l0gWtCO5zvy8dpHapiWuD0fS3OtzKPYfbImRFiPr4vAFYe3fIKk04l5IExawvhhVeNpWOF688Q==</Modulus>
+						<Exponent>AQAB</Exponent>
+					</RSAKeyValue>
+				</KeyValue>
+				<X509Data>
+					<X509SubjectName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509SubjectName>
+					<X509IssuerSerial>
+						<X509IssuerName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509IssuerName>
+						<X509SerialNumber>38743023</X509SerialNumber>
+					</X509IssuerSerial>
+					<X509Certificate>MIIDkTCCAnmgAwIBAgIEAk8r7zANBgkqhkiG9w0BAQsFADBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwHhcNMjAwMjE2MTkzMzEyWhcNMzAwMjEzMTkzMzEyWjBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCeV3TTrK6b3QRi3o+dwENEL8K2kIMgUE3H25mVCdgT9+vDqOTLlRjhBWgTx/LEQRR+wYG72Qou+J72QNjMk6l5u+bAk+I50Yb0y92gHC/SQ6xQLgX9Do839bRX6eU8V2mO7lMb5z3om1bI5lSNXO+7onvCQK26DpApRpCKkQL9NPl+4dnZEGy7eG21uQPVysuI8PJNvc5HD73KcfDrPQfUpLCSBfN4ZyOsBUnSzzU7NaqEm0+vfgG2diIImEsbub//FPFMMJrmA3eXSBa0I7nO/Lx2kdqmJa4PR9Lc63Mo9h9siZEWI+vi8AVh7d8gqTTiXkgTFrC+GFV42lY4XrzxAgMBAAGjNzA1MBQGA1UdEQQNMAuCCWxvY2FsaG9zdDAdBgNVHQ4EFgQU/UYjAsSd5ZpoGdeFEE3HvZaJ07wwDQYJKoZIhvcNAQELBQADggEBAEJOfXifv2H6HzHHX4erDmSFC4mvDbgw9FY0GeKU5R6MQKNSc7lpCCXf6/RJ5KipraAbs+e1Y9CTvhvS4K2cvEDxi+wn5yFkPH72RnRvDsACHKvYPIbV1q3S9SG91QMaCFPcHb1TpEldHRD8AX/C9ERr5dlZactEyBQVmS8WN8rTXU6hlDqAMkVEGRXUHCeVKAKlgNqgKMOPGLZ6HR9EW7W/98jI6qObZk5ATNlbXdi8KtB4542Igdb8XKp/pRCR5mt+oq77ogbS+SN5p8e31Tu4FoD4N+kUW/WCmYXHEuE3bOs2Pq8oK2t5GLNVQRfdumucbk7AhrJx0bcWu63jr0I=</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</tns:Certificate>
+		<tns:Certificate tns:certId="CLIENT_ClientCert">
+			<KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<KeyValue>
+					<RSAKeyValue>
+						<Modulus>nld006yum90EYt6PncBDRC/CtpCDIFBNx9uZlQnYE/frw6jky5UY4QVoE8fyxEEUfsGBu9kKLvie9kDYzJOpebvmwJPiOdGG9MvdoBwv0kOsUC4F/Q6PN/W0V+nlPFdpju5TG+c96JtWyOZUjVzvu6J7wkCtug6QKUaQipEC/TT5fuHZ2RBsu3httbkD1crLiPDyTb3ORw+9ynHw6z0H1KSwkgXzeGcjrAVJ0s81OzWqhJtPr34BtnYiCJhLG7m//xTxTDCa5gN3l0gWtCO5zvy8dpHapiWuD0fS3OtzKPYfbImRFiPr4vAFYe3fIKk04l5IExawvhhVeNpWOF688Q==</Modulus>
+						<Exponent>AQAB</Exponent>
+					</RSAKeyValue>
+				</KeyValue>
+				<X509Data>
+					<X509SubjectName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509SubjectName>
+					<X509IssuerSerial>
+						<X509IssuerName>CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown</X509IssuerName>
+						<X509SerialNumber>38743023</X509SerialNumber>
+					</X509IssuerSerial>
+					<X509Certificate>MIIDkTCCAnmgAwIBAgIEAk8r7zANBgkqhkiG9w0BAQsFADBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwHhcNMjAwMjE2MTkzMzEyWhcNMzAwMjEzMTkzMzEyWjBuMRAwDgYDVQQGEwdVbmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYDVQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRIwEAYDVQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCeV3TTrK6b3QRi3o+dwENEL8K2kIMgUE3H25mVCdgT9+vDqOTLlRjhBWgTx/LEQRR+wYG72Qou+J72QNjMk6l5u+bAk+I50Yb0y92gHC/SQ6xQLgX9Do839bRX6eU8V2mO7lMb5z3om1bI5lSNXO+7onvCQK26DpApRpCKkQL9NPl+4dnZEGy7eG21uQPVysuI8PJNvc5HD73KcfDrPQfUpLCSBfN4ZyOsBUnSzzU7NaqEm0+vfgG2diIImEsbub//FPFMMJrmA3eXSBa0I7nO/Lx2kdqmJa4PR9Lc63Mo9h9siZEWI+vi8AVh7d8gqTTiXkgTFrC+GFV42lY4XrzxAgMBAAGjNzA1MBQGA1UdEQQNMAuCCWxvY2FsaG9zdDAdBgNVHQ4EFgQU/UYjAsSd5ZpoGdeFEE3HvZaJ07wwDQYJKoZIhvcNAQELBQADggEBAEJOfXifv2H6HzHHX4erDmSFC4mvDbgw9FY0GeKU5R6MQKNSc7lpCCXf6/RJ5KipraAbs+e1Y9CTvhvS4K2cvEDxi+wn5yFkPH72RnRvDsACHKvYPIbV1q3S9SG91QMaCFPcHb1TpEldHRD8AX/C9ERr5dlZactEyBQVmS8WN8rTXU6hlDqAMkVEGRXUHCeVKAKlgNqgKMOPGLZ6HR9EW7W/98jI6qObZk5ATNlbXdi8KtB4542Igdb8XKp/pRCR5mt+oq77ogbS+SN5p8e31Tu4FoD4N+kUW/WCmYXHEuE3bOs2Pq8oK2t5GLNVQRfdumucbk7AhrJx0bcWu63jr0I=</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</tns:Certificate>
+		<tns:SecurityDetails tns:securityId="CLIENT_Security">
+			<tns:TrustAnchors>
+				<tns:AnchorCertificateRef tns:certId="CLIENT_SigningCert" />
+				<tns:AnchorCertificateRef tns:certId="CLIENT_EncryptionCert" />
+			</tns:TrustAnchors>
+		</tns:SecurityDetails>
+		<tns:SecurityDetails tns:securityId="CLIENT_TransportSecurity">
+			<tns:TrustAnchors>
+				<tns:AnchorCertificateRef tns:certId="CLIENT_ServerCert" />
+				<tns:AnchorCertificateRef tns:certId="CLIENT_ClientCert" />
+			</tns:TrustAnchors>
+		</tns:SecurityDetails>
+		<tns:DeliveryChannel tns:channelId="CLIENT_defaultDeliveryChannel_ProfileBestEffortSigned" tns:docExchangeId="CLIENT_SIGNED_BestEffort" tns:transportId="CLIENT_transport_HTTPS">
+			<tns:MessagingCharacteristics tns:syncReplyMode="none" tns:ackRequested="never" tns:actor="urn:oasis:names:tc:ebxml-msg:actor:toPartyMSH" tns:ackSignatureRequested="never" tns:duplicateElimination="never" />
+		</tns:DeliveryChannel>
+		<tns:DeliveryChannel tns:channelId="CLIENT_defaultDeliveryChannel_ProfileReliableMessagingSigned" tns:docExchangeId="CLIENT_SIGNED_ReliableMessaging" tns:transportId="CLIENT_transport_HTTPS">
+			<tns:MessagingCharacteristics tns:syncReplyMode="none" tns:ackRequested="always" tns:actor="urn:oasis:names:tc:ebxml-msg:actor:toPartyMSH" tns:ackSignatureRequested="never" tns:duplicateElimination="always" />
+		</tns:DeliveryChannel>
+		<tns:Transport tns:transportId="CLIENT_transport_HTTPS">
+			<tns:TransportSender>
+				<tns:TransportProtocol tns:version="1.1">HTTP</tns:TransportProtocol>
+				<tns:TransportClientSecurity>
+					<tns:TransportSecurityProtocol tns:version="3.0">SSL</tns:TransportSecurityProtocol>
+					<tns:ClientCertificateRef tns:certId="CLIENT_ClientCert" />
+					<tns:ServerSecurityDetailsRef tns:securityId="CLIENT_TransportSecurity" />
+				</tns:TransportClientSecurity>
+			</tns:TransportSender>
+			<tns:TransportReceiver>
+				<tns:TransportProtocol tns:version="1.1">HTTP</tns:TransportProtocol>
+				<tns:Endpoint tns:uri="https://localhost:8088/ebms" tns:type="allPurpose" />
+				<tns:TransportServerSecurity>
+					<tns:TransportSecurityProtocol tns:version="3.0">SSL</tns:TransportSecurityProtocol>
+					<tns:ServerCertificateRef tns:certId="CLIENT_ServerCert" />
+					<tns:ClientSecurityDetailsRef tns:securityId="CLIENT_TransportSecurity" />
+				</tns:TransportServerSecurity>
+			</tns:TransportReceiver>
+		</tns:Transport>
+		<tns:DocExchange tns:docExchangeId="CLIENT_SIGNED_BestEffort">
+			<tns:ebXMLSenderBinding tns:version="2.0">
+				<tns:SenderNonRepudiation>
+					<tns:NonRepudiationProtocol>http://www.w3.org/2000/09/xmldsig#</tns:NonRepudiationProtocol>
+					<tns:HashFunction>http://www.w3.org/2000/09/xmldsig#sha1</tns:HashFunction>
+					<tns:SignatureAlgorithm>http://www.w3.org/2000/09/xmldsig#rsa-sha1</tns:SignatureAlgorithm>
+					<tns:SigningCertificateRef tns:certId="CLIENT_SigningCert" />
+				</tns:SenderNonRepudiation>
+			</tns:ebXMLSenderBinding>
+			<tns:ebXMLReceiverBinding tns:version="2.0">
+				<tns:ReceiverNonRepudiation>
+					<tns:NonRepudiationProtocol>http://www.w3.org/2000/09/xmldsig#</tns:NonRepudiationProtocol>
+					<tns:HashFunction>http://www.w3.org/2000/09/xmldsig#sha1</tns:HashFunction>
+					<tns:SignatureAlgorithm>http://www.w3.org/2000/09/xmldsig#rsa-sha1</tns:SignatureAlgorithm>
+					<tns:SigningSecurityDetailsRef tns:securityId="CLIENT_Security" />
+				</tns:ReceiverNonRepudiation>
+			</tns:ebXMLReceiverBinding>
+		</tns:DocExchange>
+		<tns:DocExchange tns:docExchangeId="CLIENT_SIGNED_ReliableMessaging">
+			<tns:ebXMLSenderBinding tns:version="2.0">
+				<tns:ReliableMessaging>
+					<tns:Retries>5</tns:Retries>
+					<tns:RetryInterval>PT5M</tns:RetryInterval>
+					<tns:MessageOrderSemantics>NotGuaranteed</tns:MessageOrderSemantics>
+				</tns:ReliableMessaging>
+				<tns:PersistDuration>PT30M</tns:PersistDuration>
+				<tns:SenderNonRepudiation>
+					<tns:NonRepudiationProtocol>http://www.w3.org/2000/09/xmldsig#</tns:NonRepudiationProtocol>
+					<tns:HashFunction>http://www.w3.org/2000/09/xmldsig#sha1</tns:HashFunction>
+					<tns:SignatureAlgorithm>http://www.w3.org/2000/09/xmldsig#rsa-sha1</tns:SignatureAlgorithm>
+					<tns:SigningCertificateRef tns:certId="CLIENT_SigningCert" />
+				</tns:SenderNonRepudiation>
+			</tns:ebXMLSenderBinding>
+			<tns:ebXMLReceiverBinding tns:version="2.0">
+				<tns:ReliableMessaging>
+					<tns:Retries>5</tns:Retries>
+					<tns:RetryInterval>PT5M</tns:RetryInterval>
+					<tns:MessageOrderSemantics>NotGuaranteed</tns:MessageOrderSemantics>
+				</tns:ReliableMessaging>
+				<tns:PersistDuration>PT30M</tns:PersistDuration>
+				<tns:ReceiverNonRepudiation>
+					<tns:NonRepudiationProtocol>http://www.w3.org/2000/09/xmldsig#</tns:NonRepudiationProtocol>
+					<tns:HashFunction>http://www.w3.org/2000/09/xmldsig#sha1</tns:HashFunction>
+					<tns:SignatureAlgorithm>http://www.w3.org/2000/09/xmldsig#rsa-sha1</tns:SignatureAlgorithm>
+					<tns:SigningSecurityDetailsRef tns:securityId="CLIENT_Security" />
+				</tns:ReceiverNonRepudiation>
+			</tns:ebXMLReceiverBinding>
+		</tns:DocExchange>
+	</tns:PartyInfo>
+	<tns:SimplePart tns:id="MsgHdr" tns:mimetype="text/xml">
+		<tns:NamespaceSupported tns:location="http://www.oasis-open.org/committees/ebxml-msg/schema/msg-header-2_0.xsd" tns:version="2.0">http://www.oasis-open.org/committees/ebxml-msg/schema/msg-header-2_0.xsd</tns:NamespaceSupported>
+	</tns:SimplePart>
+	<tns:SimplePart tns:id="XMLMsg" tns:mimetype="application/xml" />
+	<tns:Packaging tns:id="MshSignalPackage">
+		<tns:ProcessingCapabilities tns:parse="true" tns:generate="true" />
+		<tns:CompositeList>
+			<tns:Composite tns:id="MshSignal" tns:mimetype="multipart/related" tns:mimeparameters="type=text/xml">
+				<tns:Constituent tns:idref="MsgHdr" />
+			</tns:Composite>
+		</tns:CompositeList>
+	</tns:Packaging>
+	<tns:Packaging tns:id="XMLMessagePackage">
+		<tns:ProcessingCapabilities tns:parse="true" tns:generate="true" />
+		<tns:CompositeList>
+			<tns:Composite tns:id="Message" tns:mimetype="multipart/related" tns:mimeparameters="type=text/xml">
+				<tns:Constituent tns:idref="MsgHdr" />
+				<tns:Constituent tns:idref="XMLMsg" />
+			</tns:Composite>
+		</tns:CompositeList>
+	</tns:Packaging>
+</tns:CollaborationProtocolAgreement>
