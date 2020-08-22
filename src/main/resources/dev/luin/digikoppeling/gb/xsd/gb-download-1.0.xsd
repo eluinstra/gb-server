@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:gb="http://www.logius.nl/digikoppeling/gb/2010/10"
+	xmlns:tns="http://luin.dev/gb/upload/1.0/"
+	targetNamespace="http://luin.dev/gb/upload/1.0/"
+	elementFormDefault="qualified">
+	<xsd:import namespace="http://www.logius.nl/digikoppeling/gb/2010/10" schemaLocation="gb-201010.xsd"/>
+	<xsd:element name="uploadBericht">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="berichtkenmerk" type="tns:berichtkenmerkType" nillable="false"/>
+				<xsd:element name="tijdstempel" type="xsd:dateTime" nillable="false"/>
+				<xsd:element name="identiteitBelanghebbende" type="tns:identiteitType" nillable="false"/>
+				<xsd:element name="identiteitOntvanger" type="tns:identiteitType" nillable="false" minOccurs="0"/>
+				<xsd:element name="bestand" type="gb:data-reference" nillable="false"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="uploadBevestigBericht">
+		<xsd:complexType>
+			<xsd:sequence>			
+				<xsd:element name="berichtkenmerk" type="tns:berichtkenmerkType" nillable="false"/>
+				<xsd:choice>
+					<xsd:element name="tijdstempel" type="xsd:dateTime" nillable="false"/>
+					<xsd:element name="fout" type="tns:foutType"/>
+				</xsd:choice>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="identiteitType">
+		<xsd:annotation>
+			<xsd:documentation>
+						Element				:	identiteitType
+						Type						:	Nummer in combinatie met het type
+						Maximale lengte	: 	20
+						Beschrijving			:	De identiteit van de belanghebbende is een nummer waarmee degene op wie de inhoud van het bedrijfsdocument 
+														betrekking heeft (of die verantwoordelijk is voor het kennisnemen daarvan) kan worden geïdentificeerd. Deze identiteit 
+														kan worden gebruikt om een match te maken met een eventueel in het bedrijfsdocument voorkomende identiteit. De 
+														belanghebbende kan ook een ander zijn dan de aanleveraar of opvrager van berichten.
+
+														De identiteit van de ontvanger is een nummer aan de hand waarvan kan worden vastgesteld bij welke partij het bericht 
+														moet worden afgeleverd.
+
+														De typen die ondersteunt worden zijn: BSN, KvK, BTW, Fi en OIN
+					</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="nummer" nillable="false">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:normalizedString">
+						<xsd:whiteSpace value="collapse"/>
+						<xsd:maxLength value="20"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="type" nillable="false" minOccurs="0">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="6"/>
+						<xsd:enumeration value="BSN"/>
+						<xsd:enumeration value="KvK"/>
+						<xsd:enumeration value="BTW"/>
+						<xsd:enumeration value="Fi"/>
+						<xsd:enumeration value="OIN"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+			<xsd:simpleType name="berichtkenmerkType">
+				<xsd:annotation>
+					<xsd:documentation>
+						Element				:	berichtkenmerkType
+						Type						:	Tekst
+						Maximale lengte	:	256
+						Beschrijving			:	Het unieke kenmerk van het bericht.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:normalizedString">
+					<xsd:whiteSpace value="collapse"/>
+					<xsd:maxLength value="256"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="foutcodeType">
+				<xsd:restriction base="xsd:normalizedString">
+					<xsd:whiteSpace value="collapse"/>
+					<xsd:maxLength value="20"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="foutbeschrijvingType">
+				<xsd:restriction base="xsd:normalizedString">
+					<xsd:whiteSpace value="collapse"/>
+					<xsd:maxLength value="8192"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:complexType name="foutType">
+				<xsd:sequence>
+					<xsd:element name="foutcode" type="tns:foutcodeType" nillable="false"/>
+					<xsd:element name="foutbeschrijving" type="tns:foutbeschrijvingType" nillable="false"/>
+				</xsd:sequence>
+			</xsd:complexType>	
+</xsd:schema>
