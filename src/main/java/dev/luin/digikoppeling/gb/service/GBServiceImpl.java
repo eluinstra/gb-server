@@ -16,7 +16,7 @@
 package dev.luin.digikoppeling.gb.service;
 
 import dev.luin.digikoppeling.gb.common.ExternalDataReferenceBuilder;
-import dev.luin.fs.core.file.FileSystem;
+import dev.luin.file.server.core.file.FileSystem;
 import io.vavr.collection.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

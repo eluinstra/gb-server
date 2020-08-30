@@ -97,8 +97,8 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>dev.luin.fs</groupId>
-			<artifactId>fs-core</artifactId>
+			<groupId>dev.luin.file.server</groupId>
+			<artifactId>file-server-core</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

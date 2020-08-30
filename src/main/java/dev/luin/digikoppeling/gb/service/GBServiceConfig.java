@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import dev.luin.digikoppeling.gb.common.ExternalDataReferenceBuilder;
-import dev.luin.fs.core.file.FileSystem;
+import dev.luin.file.server.core.file.FileSystem;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 
@@ -33,7 +33,7 @@ public class GBServiceConfig
 {
 	@Autowired
 	FileSystem fileSystem;
-	@Value("${fs.baseUrl}")
+	@Value("${server.baseUrl}")
 	String baseUrl;
 
 	@Bean

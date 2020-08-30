@@ -23,7 +23,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import dev.luin.fs.core.file.FSFile;
+import dev.luin.file.server.core.file.FSFile;
 import io.vavr.collection.Seq;
 import lombok.AccessLevel;
 import lombok.NonNull;

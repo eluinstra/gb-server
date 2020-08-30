@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 
-@WebService(targetNamespace="http://luin.dev/digikoppeling/gb/1.0")
+@WebService(name = "GBService", targetNamespace="http://luin.dev/digikoppeling/gb/1.0", serviceName = "GBService", endpointInterface = "GBServiceSoapBinding", portName = "GBServicePort")
 public interface GBService
 {
   @WebResult(name="external-data-reference", targetNamespace="http://www.logius.nl/digikoppeling/gb/2010/10")
