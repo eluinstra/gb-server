@@ -23,8 +23,10 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.val;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 
+@Slf4j
 @FieldDefaults(level=AccessLevel.PRIVATE, makeFinal=true)
 @AllArgsConstructor
 public class GBServiceImpl implements GBService
@@ -37,6 +39,7 @@ public class GBServiceImpl implements GBService
 	@Override
 	public ExternalDataReference getExternalDataReference(String...paths) throws GBServiceException
 	{
+		log.debug("getExternalDataReference {}",paths);
 		val files = List.of(paths)
 				//.map(p -> fileService.getFile(path).orElseThrow(() -> new GBServiceException(p + " not found!")))
 				.map(p -> fileSystem.findFile(p).<GBServiceException>getOrElseThrow(() -> new GBServiceException(p + " not found!")));
