@@ -19,12 +19,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dev.luin.digikoppeling.gb</groupId>
-	<artifactId>gbfs-core</artifactId>
+	<artifactId>gb-server</artifactId>
 	<packaging>jar</packaging>
-	<name>Grote Berichten Server Core</name>
+	<name>Grote Berichten Server</name>
 	<version>1.0.0-SNAPSHOT</version>
-	<description>This library implements a Grote Berichten File Server</description>
-	<url>https://bitbucket.org/eluinstra/gbfs-core</url>
+	<description>This library implements the Grote Berichten Server</description>
+	<url>https://github.com/eluinstra/gb-server</url>
 	<developers>
 		<developer>
 			<id>eluinstra</id>
@@ -157,7 +157,7 @@
 							<goal>xjc</goal>
 						</goals>
 						<configuration>
-							<schemaDirectory>${project.basedir}/src/main/resources/dev/luin/digikoppeling/gb/xsd/</schemaDirectory>
+							<schemaDirectory>${project.basedir}/src/main/resources/dev/luin/digikoppeling/gb/server/xsd/</schemaDirectory>
 							<schemaFiles>gb-201010.xsd</schemaFiles>
 							<extension>true</extension>
 							<clearOutputDir>false</clearOutputDir>

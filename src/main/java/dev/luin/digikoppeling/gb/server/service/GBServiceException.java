@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.luin.digikoppeling.gb.service;
+package dev.luin.digikoppeling.gb.server.service;
 
 import javax.xml.ws.WebFault;
 
 import lombok.NoArgsConstructor;
 
-@WebFault(name="GBServiceException", targetNamespace="http://luin.dev/digikoppeling/gb/1.0")
+@WebFault(name="GBServiceException", targetNamespace="http://luin.dev/digikoppeling/gb/server/1.0")
 @NoArgsConstructor
 public class GBServiceException extends RuntimeException
 {

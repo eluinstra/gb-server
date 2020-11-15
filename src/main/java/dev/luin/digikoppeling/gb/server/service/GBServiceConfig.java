@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.luin.digikoppeling.gb.service;
+package dev.luin.digikoppeling.gb.server.service;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 
@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import dev.luin.digikoppeling.gb.common.ExternalDataReferenceBuilder;
+import dev.luin.digikoppeling.gb.server.common.ExternalDataReferenceBuilder;
 import dev.luin.file.server.core.file.FileSystem;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;

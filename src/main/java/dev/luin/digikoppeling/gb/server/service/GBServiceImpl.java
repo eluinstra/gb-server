@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.luin.digikoppeling.gb.service;
+package dev.luin.digikoppeling.gb.server.service;
 
-import dev.luin.digikoppeling.gb.common.ExternalDataReferenceBuilder;
+import dev.luin.digikoppeling.gb.server.common.ExternalDataReferenceBuilder;
 import dev.luin.file.server.core.file.FileSystem;
 import io.vavr.collection.List;
 import lombok.AccessLevel;
