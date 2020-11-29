@@ -22,7 +22,7 @@
 	<artifactId>gb-server</artifactId>
 	<packaging>jar</packaging>
 	<name>Grote Berichten Server</name>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0-M3</version>
 	<description>This library implements the Grote Berichten Server</description>
 	<url>https://github.com/eluinstra/gb-server</url>
 	<developers>
@@ -105,7 +105,7 @@
 		<dependency>
 			<groupId>dev.luin.file.server</groupId>
 			<artifactId>file-server-core</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0-M3</version>
 		</dependency>
 	</dependencies>
 	<repositories>
