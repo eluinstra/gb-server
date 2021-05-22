@@ -24,6 +24,7 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import dev.luin.file.server.core.file.FSFile;
+import dev.luin.file.server.core.file.Md5Checksum;
 import io.vavr.collection.Seq;
 import lombok.AccessLevel;
 import lombok.NonNull;
@@ -65,7 +66,7 @@ public class ExternalDataReferenceBuilder
 	private DataReference createDataReference(FSFile fsFile)
 	{
 		val result = new DataReference();
-		result.setContextId(fsFile.getMd5Checksum());
+		result.setContextId(fsFile.getMd5Checksum().getValue());
 		result.setLifetime(createLifetime(fsFile));
 		result.setContent(createContent(fsFile));
 		result.setTransport(createTransport(fsFile.getVirtualPath()));
@@ -110,11 +111,11 @@ public class ExternalDataReferenceBuilder
 		return result;
 	}
 
-	private ChecksumType createMD5Checksum(@NonNull String md5checksum)
+	private ChecksumType createMD5Checksum(@NonNull Md5Checksum md5checksum)
 	{
 		val result = new ChecksumType();
 		result.setType("MD5");
-		result.setValue(md5checksum);
+		result.setValue(md5checksum.getValue());
 		return result;
 	}
 
