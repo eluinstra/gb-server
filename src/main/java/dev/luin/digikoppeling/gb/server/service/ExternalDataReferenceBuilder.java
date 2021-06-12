@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.luin.digikoppeling.gb.server.common;
+package dev.luin.digikoppeling.gb.server.service;
 
-import java.math.BigInteger;
 import java.time.Instant;
 import java.util.GregorianCalendar;
 
@@ -25,6 +24,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import dev.luin.file.server.core.file.FSFile;
 import dev.luin.file.server.core.file.Md5Checksum;
+import dev.luin.file.server.core.file.VirtualPath;
 import io.vavr.collection.Seq;
 import lombok.AccessLevel;
 import lombok.NonNull;
@@ -47,23 +47,23 @@ public class ExternalDataReferenceBuilder
 	@NonNull
 	DatatypeFactory datatypeFactory;
 	@NonNull
-	String baseUrl;
+	Url baseUrl;
 
-	public ExternalDataReferenceBuilder(String baseUrl) throws DatatypeConfigurationException
+	public ExternalDataReferenceBuilder(@NonNull final Url baseUrl) throws DatatypeConfigurationException
 	{
 		this.datatypeFactory = DatatypeFactory.newInstance();
-		this.baseUrl = baseUrl.contains("://0.0.0.0:") ? baseUrl.replace("://0.0.0.0:","://localhost:") : baseUrl;
+		this.baseUrl = baseUrl;
 	}
 
-	public ExternalDataReference build(Seq<FSFile> fsFiles)
+	public ExternalDataReference build(@NonNull final Seq<FSFile> fsFiles)
 	{
 		val result = new ExternalDataReference();
 		result.setProfile(GbProfile.DIGIKOPPELING_GB_1_0);
-		result.getDataReference().addAll(fsFiles.map(f -> createDataReference(f)).asJava());
+		result.getDataReference().addAll(fsFiles.map(this::createDataReference).asJava());
 		return result;
 	}
 
-	private DataReference createDataReference(FSFile fsFile)
+	private DataReference createDataReference(final FSFile fsFile)
 	{
 		val result = new DataReference();
 		result.setContextId(fsFile.getMd5Checksum().getValue());
@@ -73,45 +73,42 @@ public class ExternalDataReferenceBuilder
 		return result;
 	}
 
-	private Lifetime createLifetime(@NonNull FSFile fsFile)
+	private Lifetime createLifetime(final FSFile fsFile)
 	{
 		val result = new Lifetime();
-		result.setCreationTime(createTime(fsFile.getStartDate()));
-		result.setExpirationTime(createTime(fsFile.getEndDate()));
+		result.setCreationTime(createTime(fsFile.getValidTimeFrame().getStartDate()));
+		result.setExpirationTime(createTime(fsFile.getValidTimeFrame().getEndDate()));
 		return result;
 	}
 
-	private DatetimeType createTime(Instant date)
+	private DatetimeType createTime(final Instant date)
 	{
-		if (date != null)
-		{
-			val result = new DatetimeType();
-			result.setType("xs:dateTime");
-			result.setValue(toGregorianCalendar(date));
-			return result;
-		}
-		else
+		if (date == null)
 			return null;
+		val result = new DatetimeType();
+		result.setType("xs:dateTime");
+		result.setValue(toGregorianCalendar(date));
+		return result;
 	}
 
-	private XMLGregorianCalendar toGregorianCalendar(@NonNull Instant date)
+	private XMLGregorianCalendar toGregorianCalendar(final Instant date)
 	{
 		val cal = new GregorianCalendar();
 		cal.setTimeInMillis(date.toEpochMilli());
 		return datatypeFactory.newXMLGregorianCalendar(cal);
 	}
 
-	private Content createContent(FSFile fsFile)
+	private Content createContent(final FSFile fsFile)
 	{
 		val result = new Content();
-		result.setFilename(fsFile.getName());
-		result.setContentType(fsFile.getContentType());
-		result.setSize(BigInteger.valueOf(fsFile.getFileLength()));
+		result.setFilename(fsFile.getName().getValue());
+		result.setContentType(fsFile.getContentType().getValue());
+		result.setSize(fsFile.getFileLength().toBigInteger());
 		result.setChecksum(createMD5Checksum(fsFile.getMd5Checksum()));
 		return result;
 	}
 
-	private ChecksumType createMD5Checksum(@NonNull Md5Checksum md5checksum)
+	private ChecksumType createMD5Checksum(final Md5Checksum md5checksum)
 	{
 		val result = new ChecksumType();
 		result.setType("MD5");
@@ -119,25 +116,25 @@ public class ExternalDataReferenceBuilder
 		return result;
 	}
 
-	private Transport createTransport(@NonNull String virtualPath)
+	private Transport createTransport(final VirtualPath virtualPath)
 	{
 		val result = new Transport();
 		result.setLocation(createLocation(virtualPath));
 		return result;
 	}
 
-	private Location createLocation(@NonNull String virtualPath)
+	private Location createLocation(final VirtualPath virtualPath)
 	{
 		val result = new Location();
 		result.setSenderUrl(createUrl(virtualPath));
 		return result;
 	}
 
-	private UrlType createUrl(@NonNull String virtualPath)
+	private UrlType createUrl(final VirtualPath virtualPath)
 	{
 		val result = new UrlType();
 		result.setType("xs:anyURI");
-		result.setValue(baseUrl + virtualPath);
+		result.setValue(baseUrl.append(virtualPath).toExternalForm());
 		//result.setValue(new URI(baseUrl).resolve(virtualPath).toString());
 		return result;
 	}

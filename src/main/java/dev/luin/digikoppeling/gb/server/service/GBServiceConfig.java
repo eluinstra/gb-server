@@ -22,7 +22,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import dev.luin.digikoppeling.gb.server.common.ExternalDataReferenceBuilder;
 import dev.luin.file.server.core.file.FileSystem;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -39,6 +38,6 @@ public class GBServiceConfig
 	@Bean
 	public GBService gbService() throws DatatypeConfigurationException
 	{
-		return new GBServiceImpl(fileSystem,new ExternalDataReferenceBuilder(baseUrl + "/download"));
+		return new GBServiceImpl(fileSystem,new ExternalDataReferenceBuilder(new Url(baseUrl + "/download")));
 	}
 }
