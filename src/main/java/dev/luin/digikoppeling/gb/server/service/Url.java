@@ -5,11 +5,13 @@ import java.net.URL;
 import dev.luin.file.server.core.ValueObject;
 import dev.luin.file.server.core.file.VirtualPath;
 import io.vavr.control.Try;
+import lombok.AccessLevel;
 import lombok.NonNull;
-import lombok.Value;
+import lombok.experimental.FieldDefaults;
 
-@Value
-public class Url implements ValueObject<URL>
+//@Value
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+public class Url implements ValueObject<String>
 {
 	URL value;
 
@@ -30,7 +32,7 @@ public class Url implements ValueObject<URL>
 		return new Url(value.toExternalForm() + virtualPath.getValue());
 	}
 
-	public String toExternalForm()
+	public String getValue()
 	{
 		return value.toExternalForm();
 	}

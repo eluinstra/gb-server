@@ -134,8 +134,8 @@ public class ExternalDataReferenceBuilder
 	{
 		val result = new UrlType();
 		result.setType("xs:anyURI");
-		result.setValue(baseUrl.append(virtualPath).toExternalForm());
-		//result.setValue(new URI(baseUrl).resolve(virtualPath).toString());
+		result.setValue(baseUrl.append(virtualPath).getValue());
+		//result.setValue(new URI(baseUrl).resolve(virtualPath).toString);
 		return result;
 	}
 
