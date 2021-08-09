@@ -15,6 +15,12 @@
  */
 package dev.luin.digikoppeling.gb.server.service;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 import dev.luin.file.server.core.file.FileSystem;
 import dev.luin.file.server.core.file.VirtualPath;
 import io.vavr.collection.List;
@@ -29,6 +35,8 @@ import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 @Slf4j
 @FieldDefaults(level=AccessLevel.PRIVATE, makeFinal=true)
 @AllArgsConstructor
+@Path("gb")
+@Produces(MediaType.APPLICATION_JSON)
 public class GBServiceImpl implements GBService
 {
 	@NonNull
@@ -36,8 +44,10 @@ public class GBServiceImpl implements GBService
 	@NonNull
 	ExternalDataReferenceBuilder externalDataReferenceBuilder;
 
+	@GET
+	@Path("{paths}")
 	@Override
-	public ExternalDataReference getExternalDataReference(String...paths) throws GBServiceException
+	public ExternalDataReference getExternalDataReference(@PathParam("paths") String...paths) throws GBServiceException
 	{
 		log.debug("getExternalDataReference {}",paths);
 		val files = List.of(paths)
