@@ -45,7 +45,7 @@ public class GBServiceImpl implements GBService
 	ExternalDataReferenceBuilder externalDataReferenceBuilder;
 
 	@GET
-	@Path("{paths}")
+	@Path("externalDataReference/{paths}")
 	@Override
 	public ExternalDataReference getExternalDataReference(@PathParam("paths") String...paths) throws GBServiceException
 	{
