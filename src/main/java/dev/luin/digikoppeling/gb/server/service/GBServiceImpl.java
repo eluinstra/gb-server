@@ -35,7 +35,6 @@ import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 @Slf4j
 @FieldDefaults(level=AccessLevel.PRIVATE, makeFinal=true)
 @AllArgsConstructor
-@Path("gb")
 @Produces(MediaType.APPLICATION_JSON)
 public class GBServiceImpl implements GBService
 {
