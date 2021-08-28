@@ -37,7 +37,7 @@ public class Url implements ValueObject<String>
 
 	public Url append(@NonNull VirtualPath virtualPath)
 	{
-		return new Url(value.toExternalForm() + virtualPath.getValue());
+		return new Url(value.toExternalForm() + "/" + virtualPath.getValue());
 	}
 
 	public String getValue()

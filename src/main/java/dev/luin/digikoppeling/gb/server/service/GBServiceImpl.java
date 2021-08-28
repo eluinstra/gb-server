@@ -50,7 +50,7 @@ public class GBServiceImpl implements GBService
 	{
 		log.debug("getExternalDataReference {}",paths);
 		val files = List.of(paths)
-				.map(p -> new VirtualPath(p))
+				.map(VirtualPath::new)
 				//.map(p -> fileService.getFile(path).orElseThrow(() -> new GBServiceException(p + " not found!")))
 				.map(p -> fileSystem.findFile(p).<GBServiceException>getOrElseThrow(() -> new GBServiceException(p + " not found!")));
 		return externalDataReferenceBuilder.build(files);
