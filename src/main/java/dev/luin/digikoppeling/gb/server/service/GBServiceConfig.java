@@ -30,13 +30,11 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class GBServiceConfig
 {
-	@Autowired
-	FileSystem fileSystem;
 	@Value("${server.baseUrl}")
 	String baseUrl;
 
 	@Bean
-	public GBService gbService() throws DatatypeConfigurationException
+	public GBService gbService(@Autowired FileSystem fileSystem) throws DatatypeConfigurationException
 	{
 		return new GBServiceImpl(fileSystem,new ExternalDataReferenceBuilder(new Url(baseUrl + "/download")));
 	}

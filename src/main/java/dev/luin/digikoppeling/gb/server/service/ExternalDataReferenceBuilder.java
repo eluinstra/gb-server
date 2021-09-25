@@ -15,7 +15,6 @@
  */
 package dev.luin.digikoppeling.gb.server.service;
 
-import java.net.URI;
 import java.time.Instant;
 import java.util.GregorianCalendar;
 
