@@ -1,0 +1,95 @@
+@startuml
+title Upload File
+
+participant "User\nor\nApplication" as Application
+participant GBClient
+participant FileClient
+participant EbMS
+participant "EbMS\nRemote" as EbMS_R #lightblue
+participant "FileServer\nRemote" as FileServer #lightblue
+participant "GBServer\nRemote" as GBServer #lightblue
+participant "Application\nRemote" as Application_R #lightblue
+
+Application -> GBClient: uploadFile
+activate GBClient
+GBClient -> GBClient: createUploadTransaction
+GBClient --> Application: uploadTransaction
+deactivate GBClient
+...
+GBClient -> FileClient: uploadFile
+activate FileClient
+FileClient -> FileClient: createUploadTask
+FileClient --> GBClient: uploadTask
+deactivate FileClient
+...
+FileClient -> FileServer: tusUpload
+...
+FileClient -> FileClient: updateUploadTask
+...
+GBClient -> FileClient: getUploadTasks
+FileClient --> GBClient: uploadTasks
+GBClient -> FileClient: getExternalDataReference
+FileClient --> GBClient: externalDataReference
+GBClient -> EbMS: sendMessage(uploaden)
+EbMS --> GBClient: messageId
+GBClient -> GBClient: updateUploadTransaction
+...
+EbMS -> EbMS_R: osb:upload:1.1$1.0:uploaden
+...
+EbMS_R -> EbMS: urn:oasis:names:tc:ebxml-msg:service:Acknowledgment
+...
+GBServer -> EbMS_R: getUnprocessedMessageIds(uploaden)
+EbMS_R --> GBServer: uploadenMessageIds
+GBServer -> EbMS_R: getMessage(uploadenMessageId)
+EbMS_R --> GBServer: uploadenMessage
+GBServer -> FileServer: getFileInfo(path)
+FileServer --> GBServer: fileInfo
+GBServer -> GBServer: validate
+GBServer -> GBServer: createDownloadTransaction
+GBServer -> EbMS_R: processMessage(bevestigUploadenMessageId)
+EbMS_R --> GBServer
+GBServer -> EbMS_R: sendMessage(bevestigUploaden)
+EbMS_R --> GBServer: messageId
+GBServer -> GBServer: updateDownloadTransaction
+...
+EbMS_R -> EbMS: osb:upload:1.1$1.0:bevestigUploaden
+...
+EbMS -> EbMS_R: urn:oasis:names:tc:ebxml-msg:service:Acknowledgment
+...
+GBClient -> EbMS: getUnprocessedMessageIds(bevestigUploaden)
+EbMS --> GBClient: bevestigUploadenMessageIds
+GBClient -> EbMS: getMessage(bevestigUploadenMessageId)
+EbMS --> GBClient: bevestigUploadenMessage
+GBClient -> GBClient: updateUploadTransaction
+GBClient -> EbMS: processMessage(bevestigUploadenMessageId)
+EbMS --> GBClient
+...
+Application -> GBClient: getUploadTransactions
+GBClient --> Application: uploadTransactions
+Application -> Application: processTransaction
+Application -> GBClient: deleteUploadTransaction
+activate GBClient
+GBClient -> FileClient: deleteUploadTask
+activate FileClient
+FileClient -> FileClient: deleteUploadTask
+FileClient --> GBClient
+deactivate FileClient
+GBClient -> GBClient: deleteUploadTransaction
+GBClient --> Application
+deactivate GBClient
+...
+Application_R -> GBServer: getDownloadTransactions
+GBServer --> Application_R: downloadTransactions
+Application_R -> GBServer: downloadFile
+activate GBServer
+GBServer -> FileServer: downloadFile
+FileServer --> GBServer: file
+GBServer --> Application_R: file
+deactivate GBServer
+Application_R -> Application_R: processFile
+Application_R -> GBServer: deleteDownloadTransaction
+activate GBServer
+GBServer -> GBServer: deleteDownloadTransaction
+GBServer --> Application_R
+deactivate GBServer
+@enduml

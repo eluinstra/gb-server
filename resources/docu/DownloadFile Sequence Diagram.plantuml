@@ -1,0 +1,98 @@
+@startuml
+title Download File
+
+participant Application
+participant GBClient
+participant FileClient
+participant EbMS
+participant "EbMS\nRemote" as EbMS_R #lightblue
+participant "FileServer\nRemote" as FileServer #lightblue
+participant "GBServer\nRemote" as GBServer #lightblue
+participant "Application\nRemote" as Application_R #lightblue
+
+Application_R -> GBServer: uploadFile
+activate GBServer
+GBServer -> GBServer: createUploadTransaction
+GBServer --> Application_R: uploadTransaction
+deactivate GBServer
+...
+GBServer -> FileServer: uploadFile
+FileServer --> GBServer: path
+GBServer -> FileServer: getExternalDataReference
+FileServer --> GBServer: externalDataReference
+GBServer -> EbMS_R: sendMessage(downloaden)
+EbMS_R --> GBServer: messageId
+GBServer -> GBServer: updateUploadTransaction
+...
+EbMS_R -> EbMS: osb:download:1.1$1.0:downloaden
+...
+EbMS -> EbMS_R: urn:oasis:names:tc:ebxml-msg:service:Acknowledgment
+...
+GBClient -> EbMS: getUnprocessedMessageIds(downloaden)
+EbMS --> GBClient: downloadenMessageIds
+GBClient -> EbMS: getMessage(downloadenMessageId)
+EbMS --> GBClient: downloadenMessage
+GBClient -> FileClient: downloadFile
+activate FileClient
+FileClient -> FileClient: createDownloadTask
+FileClient --> GBClient: downloadTask
+deactivate FileClient
+GBClient -> GBClient: createDownloadTransaction
+GBClient -> EbMS: processMessage(downloadenMessageId)
+EbMS --> GBClient
+...
+FileClient -> FileServer: httpDownload
+FileClient -> FileClient: updateDownloadTask
+...
+GBClient -> FileClient: getUploadTasks
+FileClient --> GBClient: uploadTasks
+GBClient -> FileClient: getFileInfo(path)
+FileClient --> GBClient: fileInfo
+GBClient -> GBClient: validate
+GBClient -> GBClient: updateDownloadTransaction
+GBClient -> EbMS: sendMessage(bevestigDownloaden)
+EbMS --> GBClient: messageId
+GBClient -> GBClient: updateDownloadTransaction
+...
+EbMS -> EbMS_R: osb:download:1.1$1.0:bevestigDownloaden
+...
+EbMS_R -> EbMS: urn:oasis:names:tc:ebxml-msg:service:Acknowledgment
+...
+GBServer -> EbMS_R: getUnprocessedMessages(bevestigDownloaden)
+EbMS_R --> GBServer: bevestigDownloadenMessageIds
+GBServer -> EbMS_R: getMessage(bevestigDownloadenMessageId)
+EbMS_R --> GBServer: downloadenMessage
+GBServer -> GBServer: updateDownloadTransaction
+GBServer -> EbMS_R: processMessage(bevestigDownloadenMessageId)
+EbMS_R --> GBServer
+...
+Application_R -> GBServer: getUploadTransactions
+GBServer --> Application_R: uploadTransactions
+Application_R -> Application_R: processTransaction
+Application_R -> GBServer: deleteUploadTransaction
+activate GBServer
+GBServer -> GBServer: deleteUploadTransaction
+GBServer --> Application_R
+deactivate GBServer
+...
+Application -> GBClient: getDownloadTransactions
+GBClient --> Application: downloadTransactions
+Application -> GBClient: downloadFile
+activate GBClient
+GBClient -> FileClient: downloadFile
+FileClient --> GBClient: file
+GBClient --> Application: file
+deactivate GBClient
+Application -> Application: processFile
+Application -> GBClient: deleteDownloadTransaction
+activate GBClient
+GBClient -> FileClient: deleteDownloadTask
+activate FileClient
+FileClient -> FileClient: deleteDownloadTask
+FileClient --> GBClient
+deactivate FileClient
+GBClient -> GBClient: deleteDownloadTransaction
+GBClient --> Application
+deactivate GBClient
+
+@enduml
