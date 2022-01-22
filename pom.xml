@@ -22,7 +22,7 @@
 	<artifactId>gb-server</artifactId>
 	<packaging>jar</packaging>
 	<name>Grote Berichten Server</name>
-	<version>1.0.0-M3</version>
+	<version>1.0.0-M4</version>
 	<description>This library implements the Grote Berichten Server</description>
 	<url>https://github.com/eluinstra/gb-server</url>
 	<developers>
@@ -41,8 +41,8 @@
 	</licenses>
 	<properties>
 		<jdk.version>1.8</jdk.version>
-		<junit.jupiter.version>5.6.2</junit.jupiter.version>
-		<spring.version>5.2.7.RELEASE</spring.version>
+		<junit.jupiter.version>5.8.2</junit.jupiter.version>
+		<spring.version>5.3.15</spring.version>
 		<checkstyle.config.location>${basedir}/resources/reporting/checkstyle.xml</checkstyle.config.location>
 		<checkstyle.header.file>${basedir}/resources/reporting/license.txt</checkstyle.header.file>
 		<checkstyle.cache.file>${project.build.directory}/checkstyle-cachefile</checkstyle.cache.file>
@@ -63,14 +63,19 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>3.3.3</version>
+			<version>4.2.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.12</version>
+			<version>1.18.22</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>2.17.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -99,19 +104,19 @@
 		<dependency>
 		    <groupId>org.apache.cxf</groupId>
 		    <artifactId>cxf-core</artifactId>
-		    <version>3.4.0</version>
+		    <version>3.5.0</version>
 		    <scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
-			<version>3.4.0</version>
+			<version>3.5.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>dev.luin.file.server</groupId>
 			<artifactId>file-server-core</artifactId>
-			<version>1.0.0-M3</version>
+			<version>1.0.0-M4</version>
 		</dependency>
 	</dependencies>
 	<repositories>
@@ -132,7 +137,7 @@
 			<plugin>
 				<groupId>com.mycila</groupId>
 				<artifactId>license-maven-plugin</artifactId>
-				<version>3.0</version>
+				<version>4.1</version>
 				<configuration>
 					<strictCheck>true</strictCheck>
 					<header>${project.basedir}/resources/license/header.txt</header>
@@ -182,7 +187,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.9.0</version>
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
@@ -197,7 +202,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
+				<version>3.2.2</version>
 				<configuration>
 					<archive>
 						<manifest>
@@ -221,7 +226,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.1.1</version>
+				<version>3.3.1</version>
 				<configuration>
 					<source>${jdk.version}</source>
 					<doclint>none</doclint>
@@ -230,7 +235,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.7.1</version>
+				<version>3.10.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -240,12 +245,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.1.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.1.2</version>
 				<configuration>
 					<detail>true</detail>
 					<enableFilesSummary>true</enableFilesSummary>
@@ -266,7 +271,7 @@
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
-				<version>4.0.4</version>
+				<version>4.5.3.0</version>
 				<configuration>
 					<spotbugsXmlOutputDirectory>${basedir}/target</spotbugsXmlOutputDirectory>
 					<xmlOutput>true</xmlOutput>
@@ -279,7 +284,7 @@
 						<plugin>
 							<groupId>com.h3xstream.findsecbugs</groupId>
 							<artifactId>findsecbugs-plugin</artifactId>
-							<version>1.10.1</version>
+							<version>1.11.0</version>
 						</plugin>
 					</plugins>
 				</configuration>
@@ -287,7 +292,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.12.0</version>
+				<version>3.15.0</version>
 				<configuration>
 					<linkXref>true</linkXref>
 					<targetJdk>${jdk.version}</targetJdk>
@@ -337,7 +342,7 @@
 			<plugin>
 				<groupId>org.owasp</groupId>
 				<artifactId>dependency-check-maven</artifactId>
-				<version>5.1.0</version>
+				<version>6.5.3</version>
 				<reportSets>
 					<reportSet>
 						<reports>
