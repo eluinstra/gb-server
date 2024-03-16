@@ -15,21 +15,19 @@
  */
 package dev.luin.digikoppeling.gb.server.service;
 
-import java.time.Instant;
-import java.util.GregorianCalendar;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-
 import dev.luin.file.server.core.file.FSFile;
 import dev.luin.file.server.core.file.Md5Checksum;
 import dev.luin.file.server.core.file.VirtualPath;
 import io.vavr.collection.Seq;
+import java.time.Instant;
+import java.util.GregorianCalendar;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import lombok.AccessLevel;
 import lombok.NonNull;
-import lombok.val;
 import lombok.experimental.FieldDefaults;
+import lombok.val;
 import nl.logius.digikoppeling.gb._2010._10.ChecksumType;
 import nl.logius.digikoppeling.gb._2010._10.DataReference;
 import nl.logius.digikoppeling.gb._2010._10.DataReference.Content;
@@ -41,7 +39,7 @@ import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 import nl.logius.digikoppeling.gb._2010._10.GbProfile;
 import nl.logius.digikoppeling.gb._2010._10.UrlType;
 
-@FieldDefaults(level=AccessLevel.PRIVATE, makeFinal=true)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ExternalDataReferenceBuilder
 {
 	@NonNull

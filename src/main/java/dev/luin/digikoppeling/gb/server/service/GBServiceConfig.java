@@ -15,16 +15,14 @@
  */
 package dev.luin.digikoppeling.gb.server.service;
 
+import dev.luin.file.server.core.file.FileSystem;
 import javax.xml.datatype.DatatypeConfigurationException;
-
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import dev.luin.file.server.core.file.FileSystem;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
 
 @Configuration
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -36,6 +34,6 @@ public class GBServiceConfig
 	@Bean
 	public GBService gbService(@Autowired FileSystem fileSystem) throws DatatypeConfigurationException
 	{
-		return new GBServiceImpl(fileSystem,new ExternalDataReferenceBuilder(new Url(baseUrl + "/download")));
+		return new GBServiceImpl(fileSystem, new ExternalDataReferenceBuilder(new Url(baseUrl + "/download")));
 	}
 }

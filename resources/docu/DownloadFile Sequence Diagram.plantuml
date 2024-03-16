@@ -5,10 +5,10 @@ participant Application
 participant GBClient
 participant FileClient
 participant EbMS
-participant "EbMS\nRemote" as EbMS_R #lightblue
-participant "FileServer\nRemote" as FileServer #lightblue
-participant "GBServer\nRemote" as GBServer #lightblue
-participant "Application\nRemote" as Application_R #lightblue
+participant "EbMS" as EbMS_R #lightblue
+participant "FileServer" as FileServer #lightblue
+participant "GBServer" as GBServer #lightblue
+participant "Application" as Application_R #lightblue
 
 Application_R -> GBServer: uploadFile
 activate GBServer

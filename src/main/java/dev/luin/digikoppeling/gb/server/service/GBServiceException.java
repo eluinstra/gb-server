@@ -15,11 +15,10 @@
  */
 package dev.luin.digikoppeling.gb.server.service;
 
-import javax.xml.ws.WebFault;
-
+import jakarta.xml.ws.WebFault;
 import lombok.NoArgsConstructor;
 
-@WebFault(name="GBServiceException", targetNamespace="http://luin.dev/digikoppeling/gb/server/1.0")
+@WebFault(name = "GBServiceException", targetNamespace = "http://luin.dev/digikoppeling/gb/server/1.0")
 @NoArgsConstructor
 public class GBServiceException extends RuntimeException
 {
@@ -27,7 +26,7 @@ public class GBServiceException extends RuntimeException
 
 	public GBServiceException(String message, Throwable cause)
 	{
-		super(message,cause);
+		super(message, cause);
 	}
 
 	public GBServiceException(String message)
