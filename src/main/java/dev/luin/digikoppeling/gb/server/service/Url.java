@@ -17,11 +17,10 @@ package dev.luin.digikoppeling.gb.server.service;
 
 import static dev.luin.file.server.core.ValueObject.isNotNull;
 
-import java.net.URL;
-
 import dev.luin.file.server.core.ValueObject;
 import dev.luin.file.server.core.file.VirtualPath;
 import io.vavr.control.Try;
+import java.net.URL;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
@@ -38,11 +37,12 @@ public class Url implements ValueObject<String>
 
 	public Url(String url)
 	{
-		this(Try.success(url)
-				.flatMap(isNotNull())
-				.map(u -> u.contains("://0.0.0.0:") ? u.replace("://0.0.0.0:","://localhost:") : u)
-				.mapTry(URL::new)
-				.getOrElseThrow(e -> new IllegalArgumentException("Url is invalid",e)));
+		this(
+				Try.success(url)
+						.flatMap(isNotNull())
+						.map(u -> u.contains("://0.0.0.0:") ? u.replace("://0.0.0.0:", "://localhost:") : u)
+						.mapTry(URL::new)
+						.getOrElseThrow(e -> new IllegalArgumentException("Url is invalid", e)));
 	}
 
 	public Url(URL url)

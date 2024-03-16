@@ -15,16 +15,20 @@
  */
 package dev.luin.digikoppeling.gb.server.service;
 
-import javax.jws.WebParam;
-import javax.jws.WebResult;
-import javax.jws.WebService;
-import javax.xml.bind.annotation.XmlElement;
-
+import jakarta.jws.WebParam;
+import jakarta.jws.WebResult;
+import jakarta.jws.WebService;
+import jakarta.xml.bind.annotation.XmlElement;
 import nl.logius.digikoppeling.gb._2010._10.ExternalDataReference;
 
-@WebService(name = "GBService", targetNamespace="http://luin.dev/digikoppeling/gb/server/1.0", serviceName = "GBService", endpointInterface = "GBServiceSoapBinding", portName = "GBServicePort")
+@WebService(
+		name = "GBService",
+		targetNamespace = "http://luin.dev/digikoppeling/gb/server/1.0",
+		serviceName = "GBService",
+		endpointInterface = "GBServiceSoapBinding",
+		portName = "GBServicePort")
 public interface GBService
 {
-  @WebResult(name="external-data-reference", targetNamespace="http://www.logius.nl/digikoppeling/gb/2010/10")
-	ExternalDataReference getExternalDataReference(@WebParam(name="path") @XmlElement(required=true) String...paths) throws GBServiceException;
+	@WebResult(name = "external-data-reference", targetNamespace = "http://www.logius.nl/digikoppeling/gb/2010/10")
+	ExternalDataReference getExternalDataReference(@WebParam(name = "path") @XmlElement(required = true) String...paths) throws GBServiceException;
 }

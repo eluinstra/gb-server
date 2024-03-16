@@ -15,25 +15,22 @@
  */
 package dev.luin.digikoppeling.gb.server;
 
+import dev.luin.digikoppeling.gb.server.service.GBServiceConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 
-import dev.luin.digikoppeling.gb.server.service.GBServiceConfig;
-
 @Configuration
-@Import({
-	GBServiceConfig.class
-})
+@Import({GBServiceConfig.class})
 @PropertySource(value = {"classpath:dev/luin/digikoppeling/gb/server/default.properties"}, ignoreResourceNotFound = true)
 public class MainConfig
 {
 	public static void main(String[] args)
 	{
-		try(AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class))
+		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class))
 		{
-			
+
 		}
 	}
 }
