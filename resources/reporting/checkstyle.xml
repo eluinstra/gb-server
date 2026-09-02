@@ -44,6 +44,11 @@ under the License.
 
     <module name="FileLength"/>
 
+    <module name="LineLength">
+      <property name="max" value="512" />
+      <property name="ignorePattern" value="@version|@see|@todo|TODO"/>
+    </module>
+
     <!-- Checks for Headers                              -->
     <!-- See http://checkstyle.sf.net/config_header.html -->
     <!--module name="RegexpHeader">
@@ -74,10 +79,6 @@ under the License.
           <property name="option" value="alone"/>
         </module>
 
-        <module name="LineLength">
-          <property name="max" value="512" />
-          <property name="ignorePattern" value="@version|@see|@todo|TODO"/>
-        </module>
 
         <module name="MemberName" />
 
