@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Baseline of pre-existing SpotBugs/FindSecBugs SECURITY findings accepted on 2026-09-04.
+     Each <Match> suppresses ONE accepted finding so the build gates on NEW findings only.
+     Work through these (prioritise the high-priority ones: SSRF, PATH_TRAVERSAL,
+     WEAK_MESSAGE_DIGEST_MD5, XSS_SERVLET) and delete the matching <Match> as you fix it.
+     Regenerate: mvn spotbugs:spotbugs, then re-derive matches from target/spotbugsXml.xml. -->
+<FindBugsFilter>
+<Match>
+  <Bug pattern="CRLF_INJECTION_LOGS"/>
+  <Class name="dev.luin.digikoppeling.gb.server.service.GBServiceImpl"/>
+  <Method name="getExternalDataReference"/>
+</Match>
+<Match>
+  <Bug pattern="JAXRS_ENDPOINT"/>
+  <Class name="dev.luin.digikoppeling.gb.server.service.GBServiceImpl"/>
+  <Method name="getExternalDataReference"/>
+</Match>
+</FindBugsFilter>
